@@ -1,0 +1,19 @@
+meta {
+  name: Hardware Alarms
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/data/device/state/HardwareAlarms?count={{count}}
+  body: none
+  auth: none
+}
+
+params:query {
+  count: {{count}}
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+}

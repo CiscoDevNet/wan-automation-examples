@@ -1,0 +1,21 @@
+meta {
+  name: Retrieve list of cloudexpress applications from device
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device/cloudx/applications?deviceId={{deviceId}}
+  body: none
+  auth: none
+}
+
+params:query {
+  deviceId: {{deviceId}}
+  ~vpn-id: 
+  ~application: 
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+}

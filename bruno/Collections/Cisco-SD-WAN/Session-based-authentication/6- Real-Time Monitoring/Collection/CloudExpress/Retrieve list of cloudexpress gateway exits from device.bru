@@ -1,0 +1,21 @@
+meta {
+  name: Retrieve list of cloudexpress gateway exits from device
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device/cloudx/gatewayexits?deviceId={{deviceId}}
+  body: none
+  auth: none
+}
+
+params:query {
+  deviceId: {{deviceId}}
+  ~vpn-id: 
+  ~application: 
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+}

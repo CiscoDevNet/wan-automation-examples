@@ -1,0 +1,16 @@
+meta {
+  name: Interface statistics
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/statistics/interface
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{csrf_token}}
+  Authorization: Bearer {{jwt_token}}
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Retrieve TCP optimization expired flows from device
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device/tcpopt/expiredflows?deviceId={{deviceId}}
+  body: none
+  auth: none
+}
+
+params:query {
+  deviceId: {{deviceId}}
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+}

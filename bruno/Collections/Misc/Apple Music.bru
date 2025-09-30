@@ -1,0 +1,17 @@
+meta {
+  name: Apple Music
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://itunes.apple.com/search?term=pinkfloyd&media=music&limit=3
+  body: none
+  auth: none
+}
+
+params:query {
+  term: pinkfloyd
+  media: music
+  limit: 3
+}

@@ -1,0 +1,20 @@
+meta {
+  name: Retrieve crash information
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device/crashlog/log?deviceId={{deviceId}}&filename=
+  body: none
+  auth: none
+}
+
+params:query {
+  deviceId: {{deviceId}}
+  filename: 
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+}
