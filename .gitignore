@@ -20,7 +20,7 @@ __pycache__
 *.pyc
 __pycache__
 #--- Project ----------------
-.DS_Store
+**/.DS_Store
 crash.log
 **/_archives
 payloads
