@@ -1,0 +1,30 @@
+#--- Environment ------------
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+**/venv/*
+#--- IDE project files ------
+.vscode/
+*.code-workspace
+.zed
+.ruff*
+.flake8
+#--- python -----------------
+__pycache__
+*.py[cod]
+*$py.class
+*.pyc
+__pycache__
+#--- Project ----------------
+.DS_Store
+crash.log
+**/_archives
+payloads
+NOTES.md
+init.sh
+output
+sdwan_api.log
