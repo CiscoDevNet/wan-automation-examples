@@ -4,7 +4,9 @@
 
 [Cisco Catalyst SD-WAN API Official documentation](https://developer.cisco.com/docs/sdwan/)
 
-This repository provides practical examples demonstrating authentication to SD-WAN Manager and subsequent API interactions. Please note these examples are for demonstration purposes only and not production-ready.
+This repository provides Python and Terraform examples for interacting with Cisco Catalyst SD-WAN Manager and the Meraki Dashboard APIs. Explore practical demonstrations for automating network configurations, monitoring, and integrations.
+
+Please note these examples are for demonstration purposes only and not production-ready.
 
 ## Install and Setup
 

@@ -84,25 +84,6 @@ wheels = [
 ]
 
 [[package]]
-name = "python"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "click" },
-    { name = "requests" },
-    { name = "simple-term-menu" },
-    { name = "tabulate" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "click", specifier = ">=8.3.0" },
-    { name = "requests", specifier = ">=2.32.5" },
-    { name = "simple-term-menu", specifier = ">=1.6.6" },
-    { name = "tabulate", specifier = ">=0.9.0" },
-]
-
-[[package]]
 name = "requests"
 version = "2.32.5"
 source = { registry = "https://pypi.org/simple" }
@@ -115,15 +96,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/c9/74/b3ff8e6c8446842c3f5c837e9c3dfcfe2018ea6ecef224c710c85ef728f4/requests-2.32.5.tar.gz", hash = "sha256:dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf", size = 134517, upload-time = "2025-08-18T20:46:02.573Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1e/db/4254e3eabe8020b458f1a747140d32277ec7a271daf1d235b70dc0b4e6e3/requests-2.32.5-py3-none-any.whl", hash = "sha256:2462f94637a34fd532264295e186976db0f5d453d1cdd31473c85a6a161affb6", size = 64738, upload-time = "2025-08-18T20:46:00.542Z" },
-]
-
-[[package]]
-name = "simple-term-menu"
-version = "1.6.6"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d8/80/f0f10b4045628645a841d3d98b584a8699005ee03a211fc7c45f6c6f0e99/simple_term_menu-1.6.6.tar.gz", hash = "sha256:9813d36f5749d62d200a5599b1ec88469c71378312adc084c00c00bfbb383893", size = 35493, upload-time = "2024-12-02T16:31:50.639Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9c/09/21d993e394c1fe5c44cd90453d88ed44932da8dfca006e424c072d77d29b/simple_term_menu-1.6.6-py3-none-any.whl", hash = "sha256:c2a869efa7a9f7e4a9c25858b42ca6974034951c137d5e281f5339b06ed8c9c2", size = 27600, upload-time = "2024-12-02T16:31:48.934Z" },
 ]
 
 [[package]]
@@ -142,4 +114,21 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/15/22/9ee70a2574a4f4599c47dd506532914ce044817c7752a79b6a51286319bc/urllib3-2.5.0.tar.gz", hash = "sha256:3fc47733c7e419d4bc3f6b3dc2b4f890bb743906a30d56ba4a5bfa4bbff92760", size = 393185, upload-time = "2025-06-18T14:07:41.644Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a7/c2/fe1e52489ae3122415c51f387e221dd0773709bad6c6cdaa599e8a2c5185/urllib3-2.5.0-py3-none-any.whl", hash = "sha256:e6b01673c0fa6a13e374b50871808eb3bf7046c4b125b216f6bf1cc604cff0dc", size = 129795, upload-time = "2025-06-18T14:07:40.39Z" },
+]
+
+[[package]]
+name = "wan-automation-examples"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "click" },
+    { name = "requests" },
+    { name = "tabulate" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "click", specifier = ">=8.3.0" },
+    { name = "requests", specifier = ">=2.32.5" },
+    { name = "tabulate", specifier = ">=0.9.0" },
 ]
