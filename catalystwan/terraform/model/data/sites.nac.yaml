@@ -3,7 +3,7 @@ sdwan:
     - id: 501
       routers:
         - chassis_id: C8K-3D1A8960-6E76-532C-DA93-50626FC5797E
-          configuration_group: TF_GERMANY_SDWAN_EDGE
+          configuration_group: TF_SDWAN_EDGE
           configuration_group_deploy: true
           device_variables:
             system_ip: 10.0.0.1
@@ -24,7 +24,7 @@ sdwan:
     - id: 502
       routers:
         - chassis_id: C8K-D4CE7174-5261-7E6F-91EA-4926BCF4C2DD
-          configuration_group: TF_GERMANY_SDWAN_EDGE
+          configuration_group: TF_SDWAN_EDGE
           configuration_group_deploy: true
           device_variables:
             system_ip: 10.0.0.2
