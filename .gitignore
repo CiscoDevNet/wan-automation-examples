@@ -19,6 +19,11 @@ __pycache__
 *$py.class
 *.pyc
 __pycache__
+#--- Terraform -------------------------------
+.terraform
+.terraform.lock.hcl
+terraform.tfstate.backup
+terraform.tfstate
 #--- Project ----------------
 **/.DS_Store
 crash.log
@@ -27,3 +32,4 @@ payloads
 **/init.sh
 **/output
 **/sdwan_api.log
+**/config.yaml
