@@ -33,3 +33,4 @@ payloads
 **/output
 **/sdwan_api.log
 **/config.yaml
+catalystwan/terraform/module/defaults.yaml
