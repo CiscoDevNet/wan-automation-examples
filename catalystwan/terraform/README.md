@@ -9,7 +9,7 @@ Please note these examples are for demonstration purposes only and not productio
 
 When working with Cisco Catalyst SD-WAN Manager APIs using Terraform, you have two primary approaches: directly leveraging the CiscoDevNet/sdwan provider or utilizing the higher-level netascode/nac-sdwan/sdwan module. Both serve the purpose of automating SD-WAN configurations, but they operate at different levels of abstraction.
 
-### SDWAN Terraform Provider
+### SD-WAN Terraform Provider
 
 The CiscoDevNet/sdwan Terraform Provider:
 
@@ -22,13 +22,13 @@ A Terraform provider is a plugin that Terraform uses to interact with an API of 
 
 **How it works:**
 
-When you use this provider, you define individual SD-WAN components (like VPNs, policies, templates, devices) as distinct Terraform resources. Each resource in your .tf files directly maps to an API call to vManage. This approach gives you granular control over every aspect of your SD-WAN configuration.
+When you use this provider, you define individual SD-WAN components (like VPNs, policies, templates, devices) as distinct Terraform resources. Each resource in your .tf files directly maps to an API call to SD-WAN Manager. This approach gives you granular control over every aspect of your SD-WAN configuration.
 
 **Use Case:**
 
 This option is ideal for users who need fine-grained control, want to manage specific SD-WAN objects directly, or are integrating with existing automation workflows that require direct API interaction. It's also the foundation upon which higher-level modules are built.
 
-### SDWAN Terraform Module
+### SD-WAN Terraform Module
 
 The netascode/nac-sdwan/sdwan Terraform Module:
 
@@ -42,7 +42,7 @@ A Terraform module is a container for multiple resources that are used together.
 
 **How it works:**
 
-Instead of defining each individual resource (e.g., a VPN, then an interface, then a policy attachment) separately in HCL (Terraform's language), this module allows you to describe your entire SD-WAN intent in a more human-readable YAML format. The module then takes this YAML input, translates it into the necessary CiscoDevNet/sdwan provider resources, and provisions them on vManage. This approach often reduces the amount of boilerplate HCL code you need to write.
+Instead of defining each individual resource (e.g., a VPN, then an interface, then a policy attachment) separately in HCL (Terraform's language), this module allows you to describe your entire SD-WAN intent in a more human-readable YAML format. The module then takes this YAML input, translates it into the necessary CiscoDevNet/sdwan provider resources, and provisions them on SD-WAN Manager. This approach often reduces the amount of boilerplate HCL code you need to write.
 
 **Use Case:**
 
@@ -79,6 +79,8 @@ Once finished, delete configuration:
 terraform destroy --auto-approve
 ```
 
+Note that this will only destroy configuration that was created by Terraform.
+
 ## Terraform provider
 
 Go to `provider` folder.
@@ -105,12 +107,14 @@ Once finished, delete configuration:
 terraform destroy --auto-approve
 ```
 
+Note that this will only destroy configuration that was created by Terraform.
+
 ## Upgrade sdwan provider
 
 To upgrade the latest acceptable version of each provider, use:
 
 ```shell
-terraform init -upgrade
+terraform init --upgrade
 ```
 
 ## Debug
