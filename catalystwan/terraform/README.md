@@ -81,6 +81,8 @@ terraform destroy --auto-approve
 
 Note that this will only destroy configuration that was created by Terraform.
 
+For more information and examples, visit: <https://netascode.cisco.com/docs/start/sdwan/first_steps/>
+
 ## Terraform Provider
 
 Go to `provider` folder.
@@ -108,6 +110,8 @@ terraform destroy --auto-approve
 ```
 
 Note that this will only destroy configuration that was created by Terraform.
+
+For more information and examples, visit: <https://registry.terraform.io/providers/CiscoDevNet/sdwan/latest/docs>
 
 ## Upgrade SD-WAN Terraform provider
 
