@@ -20,15 +20,41 @@ import click
 import requests
 import tabulate
 
-# Import the new unified Manager class and the credentials function
+# Import the Manager class and the credentials function
 from manager import Manager, get_manager_credentials_from_env
 
 
 # -----------------------------------------------------------------------------
 @click.group()
-def cli():
+@click.pass_context  # Pass the context object to the cli group
+def cli(ctx):
     """Command line tool for to collect application names and tunnel performances"""
-    pass
+    log_file_path = "sdwan_api.log"
+
+    logging.basicConfig(
+        filename=log_file_path,  # <--- Add this line to specify the log file
+        filemode="a",  # <--- Optional: 'a' for append (default), 'w' for overwrite
+        format="%(levelname)s (%(asctime)s): %(message)s (Line: %(lineno)d [%(filename)s])",
+        datefmt="%d/%m/%Y %I:%M:%S %p",
+        level=logging.INFO,
+    )
+
+    # Get manager credentials from environment variables
+    print("\n--- Getting Manager credentials from environment variables ---")
+    host, port, user, password = get_manager_credentials_from_env()
+
+    # Create session with Cisco Catalyst SD-WAN Manager
+    print("\n--- Authenticating to SD-WAN Manager ---")
+    manager = Manager(host, port, user, password)
+    ctx.obj = manager  # Store the manager object in the context
+
+    # Register a teardown callback to ensure logout happens
+    def logout_manager():
+        if ctx.obj:  # Check if manager was successfully created
+            ctx.obj.logout()
+            print("\n--- Logged out from SD-WAN Manager ---")
+
+    ctx.call_on_close(logout_manager)
 
 
 # -----------------------------------------------------------------------------
@@ -55,7 +81,8 @@ def save_json(
 
 # -----------------------------------------------------------------------------
 @click.command()
-def app_list():
+@click.pass_context  # Pass the context to the command
+def app_list(ctx):
     """
     Retrieve the list of Applications.
     Example command: python approute.py app-list
@@ -64,6 +91,9 @@ def app_list():
     print("Application List ")
 
     api_path = "/device/dpi/application-mapping"
+
+    # Get manager from context
+    manager = ctx.obj
 
     # Fetch API endpoint
     try:
@@ -74,7 +104,7 @@ def app_list():
         app_headers = ["App name", "Family", "ID"]
 
         table = list()
-        cli = cmd.Cmd()
+        # cli = cmd.Cmd() # This line is not needed here as cmd.Cmd is not used for columnize
 
         for item in data:
             tr = [item["name"], item["family"], item["appId"]]
@@ -91,7 +121,8 @@ def app_list():
 
 # -----------------------------------------------------------------------------
 @click.command()
-def app_list2():
+@click.pass_context  # Pass the context to the command
+def app_list2(ctx):
     """
     Retrieve the list of Applications (alternative display).
     Display app-name and family in multi-column view
@@ -101,6 +132,9 @@ def app_list2():
 
     api_path = "/device/dpi/application-mapping"
 
+    # Get manager from context
+    manager = ctx.obj
+
     # Fetch API endpoint for org name
     try:
         payload = manager._api_get(api_path)
@@ -109,13 +143,12 @@ def app_list2():
         save_json(data, "app_data", "output/payloads/approute/")
 
         table = list()
-        cli = cmd.Cmd()
+        local_cmd_cli = cmd.Cmd()  # Instantiate cmd.Cmd locally where it's used
 
         for item in data:
-            # print(item['name'])
             table.append(item["name"] + "(" + item["family"] + ")")
 
-        click.echo(cli.columnize(table, displaywidth=120))
+        click.echo(local_cmd_cli.columnize(table, displaywidth=120))
 
     except requests.exceptions.RequestException as e:
         print(f"An unexpected error occurred: {e}")
@@ -126,7 +159,8 @@ def app_list2():
 
 # -----------------------------------------------------------------------------
 @click.command()
-def app_qosmos():
+@click.pass_context  # Pass the context to the command
+def app_qosmos(ctx):
     """
     Retrieve the list of Qosmos Applications (original Viptela classification engine)
     Example command: python approute.py app-qosmos
@@ -134,6 +168,9 @@ def app_qosmos():
     print("Application List (qosmos)")
 
     api_path = "/device/dpi/qosmos-static/applications"
+
+    # Get manager from context
+    manager = ctx.obj
 
     # Fetch API endpoint
     try:
@@ -144,7 +181,7 @@ def app_qosmos():
         app_headers = ["App name", "Family", "ID"]
 
         table = list()
-        cli = cmd.Cmd()
+        # cli = cmd.Cmd() # This line is not needed here
 
         for item in data:
             tr = [item["name"], item["family"], item["appId"]]
@@ -161,7 +198,8 @@ def app_qosmos():
 
 # -----------------------------------------------------------------------------
 @click.command()
-def approute_fields():
+@click.pass_context  # Pass the context to the command
+def approute_fields(ctx):
     """
     Retrieve App route Aggregation API Query fields.
     Example command: python approute.py approute-fields
@@ -169,18 +207,21 @@ def approute_fields():
 
     api_path = "/statistics/approute/fields"
 
+    # Get manager from context
+    manager = ctx.obj
+
     # Fetch API endpoint for org name
     try:
         payload = manager._api_get(api_path)
         save_json(payload, "approute-fields", "output/payloads/approute/")
 
         tags = list()
-        cli = cmd.Cmd()
+        local_cmd_cli = cmd.Cmd()  # Instantiate cmd.Cmd locally where it's used
 
         for item in payload:
             tags.append(item["property"] + "(" + item["dataType"] + ")")
 
-        click.echo(cli.columnize(tags, displaywidth=120))
+        click.echo(local_cmd_cli.columnize(tags, displaywidth=120))
 
     except requests.exceptions.RequestException as e:
         print(f"An unexpected error occurred: {e}")
@@ -191,13 +232,17 @@ def approute_fields():
 
 # -----------------------------------------------------------------------------
 @click.command()
-def approute_stats():
+@click.pass_context  # Pass the context to the command
+def approute_stats(ctx):
     """
     Create Average Approute statistics for all tunnels between provided 2 routers for last 1 hour.
     Example command: python approute.py approute-stats
     """
 
     api_path = "/statistics/approute/aggregation"
+
+    # Get manager from context
+    manager = ctx.obj
 
     # Routers System IPs
 
@@ -359,11 +404,15 @@ def approute_stats():
 
 # -----------------------------------------------------------------------------
 @click.command()
-def approute_device():
+@click.pass_context  # Pass the context to the command
+def approute_device(ctx):
     """
     Get Realtime Approute statistics for a specific tunnel for provided router and remote.
     Example command: python approute.py approute-device
     """
+
+    # Get manager from context
+    manager = ctx.obj
 
     # Input parameters
 
@@ -438,22 +487,7 @@ def approute_device():
 
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
-    log_file_path = "sdwan_api.log"
-
-    logging.basicConfig(
-        filename=log_file_path,  # <--- Add this line to specify the log file
-        filemode="a",  # <--- Optional: 'a' for append (default), 'w' for overwrite
-        format="%(levelname)s (%(asctime)s): %(message)s (Line: %(lineno)d [%(filename)s])",
-        datefmt="%d/%m/%Y %I:%M:%S %p",
-        level=logging.INFO,
-    )
-
-    # Create session with Cisco Catalyst SD-WAN Manager
-    print("\n--- Authenticating to SD-WAN Manager ---")
-    host, port, user, password = get_manager_credentials_from_env()
-    manager = Manager(host, port, user, password)
-
-    # Run commands
+    # Add commands to the cli group
     cli.add_command(app_list)
     cli.add_command(app_list2)
     cli.add_command(app_qosmos)
@@ -461,12 +495,6 @@ if __name__ == "__main__":
     cli.add_command(approute_stats)
     cli.add_command(approute_device)
 
-    try:
-        cli()
-
-    finally:
-        # This block will always execute after cli() finishes,
-        # whether commands succeeded, failed, or no command was run.
-        if manager:  # Ensure manager was successfully initialized
-            manager.logout()
-            print("\n--- Logged out from SD-WAN Manager ---")
+    # Call the cli group.
+    # The authentication and logout will be handled by the cli group's context and teardown callback.
+    cli()

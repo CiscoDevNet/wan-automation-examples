@@ -24,9 +24,35 @@ from manager import Manager, get_manager_credentials_from_env
 
 # -----------------------------------------------------------------------------
 @click.group()
-def cli():
-    """Command line tool for to collect application names)."""
-    pass
+@click.pass_context  # Pass the context object to the cli group
+def cli(ctx):
+    """Command line tool for to collect application names and tunnel performances"""
+    log_file_path = "sdwan_api.log"
+
+    logging.basicConfig(
+        filename=log_file_path,  # <--- Add this line to specify the log file
+        filemode="a",  # <--- Optional: 'a' for append (default), 'w' for overwrite
+        format="%(levelname)s (%(asctime)s): %(message)s (Line: %(lineno)d [%(filename)s])",
+        datefmt="%d/%m/%Y %I:%M:%S %p",
+        level=logging.INFO,
+    )
+
+    # Get manager credentials from environment variables
+    print("\n--- Getting Manager credentials from environment variables ---")
+    host, port, user, password = get_manager_credentials_from_env()
+
+    # Create session with Cisco Catalyst SD-WAN Manager
+    print("\n--- Authenticating to SD-WAN Manager ---")
+    manager = Manager(host, port, user, password)
+    ctx.obj = manager  # Store the manager object in the context
+
+    # Register a teardown callback to ensure logout happens
+    def logout_manager():
+        if ctx.obj:  # Check if manager was successfully created
+            ctx.obj.logout()
+            print("\n--- Logged out from SD-WAN Manager ---")
+
+    ctx.call_on_close(logout_manager)
 
 
 # -----------------------------------------------------------------------------
@@ -53,13 +79,17 @@ def save_json(
 
 # -----------------------------------------------------------------------------
 @click.command()
-def ls():
+@click.pass_context  # Pass the context to the command
+def ls(ctx):
     """
     Get Device list
     """
     type = "vedges"
 
     api_path = "/system/device/%s" % (type)
+
+    # Get manager from context
+    manager = ctx.obj
 
     # Fetch API endpoint
     try:
@@ -102,11 +132,15 @@ def ls():
 
 # -----------------------------------------------------------------------------
 @click.command()
-def get_device_by_ip():
+@click.pass_context  # Pass the context to the command
+def get_device_by_ip(ctx):
     """
     Get Device by IP
     /system/device/{type}?deviceIP={ip_address}
     """
+
+    # Get manager from context
+    manager = ctx.obj
 
     type = "vedges"
     systemip = click.prompt("Enter device system-ip", type=str)
@@ -151,11 +185,15 @@ def get_device_by_ip():
 
 # -----------------------------------------------------------------------------
 @click.command()
-def get_config():
+@click.pass_context  # Pass the context to the command
+def get_config(ctx):
     """
     Get Device Configuration
     dataservice/template/config/running/{uuid}
     """
+
+    # Get manager from context
+    manager = ctx.obj
 
     uuid = click.prompt("Enter device uuid", type=str)
     api_path = f"/template/config/running/{uuid}"
@@ -177,32 +215,11 @@ def get_config():
 
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
-    log_file_path = "sdwan_api.log"
-
-    logging.basicConfig(
-        filename=log_file_path,  # <--- Add this line to specify the log file
-        filemode="a",  # <--- Optional: 'a' for append (default), 'w' for overwrite
-        format="%(levelname)s (%(asctime)s): %(message)s (Line: %(lineno)d [%(filename)s])",
-        datefmt="%d/%m/%Y %I:%M:%S %p",
-        level=logging.INFO,
-    )
-
-    # Create session with Cisco Catalyst SD-WAN Manager
-    print("\n--- Authenticating to SD-WAN Manager ---")
-    host, port, user, password = get_manager_credentials_from_env()
-    manager = Manager(host, port, user, password)
-
-    # Run commands
+    # Add commands to the cli group
     cli.add_command(ls)
     cli.add_command(get_config)
     cli.add_command(get_device_by_ip)
 
-    try:
-        cli()
-
-    finally:
-        # This block will always execute after cli() finishes,
-        # whether commands succeeded, failed, or no command was run.
-        if manager:  # Ensure manager was successfully initialized
-            manager.logout()
-            print("\n--- Logged out from SD-WAN Manager ---")
+    # Call the cli group.
+    # The authentication and logout will be handled by the cli group's context and teardown callback.
+    cli()
