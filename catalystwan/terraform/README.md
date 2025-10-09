@@ -81,7 +81,7 @@ terraform destroy --auto-approve
 
 Note that this will only destroy configuration that was created by Terraform.
 
-## Terraform provider
+## Terraform Provider
 
 Go to `provider` folder.
 
