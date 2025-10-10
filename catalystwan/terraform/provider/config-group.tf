@@ -8,20 +8,20 @@ resource "sdwan_configuration_group" "example" {
     sdwan_service_feature_profile.Service_Profile.id
   ]
   devices = [{
-    id     = "C8K-3A3DD488-D04F-3204-90F5-2E754FD14877"
+    id     = local.config.system.uuid
     deploy = true
     variables = [
       {
         name  = "host_name"
-        value = "edge1-paris"
+        value = local.config.system.hostname
       },
       {
         name  = "site_id"
-        value = "201"
+        value = local.config.system.site_id
       },
       {
         name  = "system_ip"
-        value = "10.0.0.3"
+        value = local.config.system.system_ip
       },
       {
         name  = "pseudo_commit_timer"
