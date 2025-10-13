@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Cisco-SD-WAN",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

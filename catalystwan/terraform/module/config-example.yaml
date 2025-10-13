@@ -1,0 +1,6 @@
+# SD-WAN Manager
+# Update with your manager credentials
+manager:
+  username: <admin>
+  password: <mysuperpassword>
+  url: https://<manager-ip-address>

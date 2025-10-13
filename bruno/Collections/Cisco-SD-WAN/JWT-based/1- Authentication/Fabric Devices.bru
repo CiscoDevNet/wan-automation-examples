@@ -1,0 +1,16 @@
+meta {
+  name: Fabric Devices
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{csrf_token}}
+  Authorization: Bearer {{jwt_token}}
+}

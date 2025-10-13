@@ -1,0 +1,15 @@
+meta {
+  name: Template Feature
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/template/feature
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+}

@@ -1,0 +1,1115 @@
+{
+  "header": {
+    "generatedOn": 1756385927986
+  },
+  "data": [
+    {
+      "key": "Major",
+      "value": "Major",
+      "associatedAlarms": [
+        {
+          "key": "WANI_Recommendation",
+          "value": "WANI Recommendation"
+        },
+        {
+          "key": "ISE",
+          "value": "ISE"
+        },
+        {
+          "key": "SD-AVC Cloud Connector Credentials Error",
+          "value": "SD-AVC Cloud Connector Credentials Error"
+        },
+        {
+          "key": "Create PxGrid Account failed",
+          "value": "Create PxGrid Account failed"
+        },
+        {
+          "key": "Tracker_State_Change",
+          "value": "Tracker State Change"
+        },
+        {
+          "key": "Multicloud",
+          "value": "Multicloud"
+        },
+        {
+          "key": "CoR SaaS - Application Path Status",
+          "value": "CoR SaaS - Application Path Status"
+        },
+        {
+          "key": "Disk_Usage",
+          "value": "Disk Usage"
+        },
+        {
+          "key": "Pushing PxGrid config to vSmarts failed",
+          "value": "Pushing PxGrid config to vSmarts failed"
+        },
+        {
+          "key": "ISE server connection failed",
+          "value": "ISE server connection failed"
+        },
+        {
+          "key": "UTD_File_Analysis_Upload_Status",
+          "value": "UTD File Analysis Upload Status"
+        },
+        {
+          "key": "RootCA_Certificate_Warning",
+          "value": "RootCA Certificate Warning"
+        },
+        {
+          "key": "Nat_Update",
+          "value": "Nat Update"
+        },
+        {
+          "key": "SD-AVC_State_Change",
+          "value": "SD-AVC State Change"
+        },
+        {
+          "key": "Data_Policy_Commit_Failure",
+          "value": "Data Policy Commit Failure"
+        },
+        {
+          "key": "Memory_Barrier",
+          "value": "Memory Barrier"
+        },
+        {
+          "key": "ZBFW_Session_Rate_Alert_On",
+          "value": "ZBFW Session Rate Alert On"
+        },
+        {
+          "key": "Control_vBond_State_Change",
+          "value": "Control vBond State Change"
+        },
+        {
+          "key": "Security_Certificate_Expiring",
+          "value": "Security Certificate Expiring"
+        },
+        {
+          "key": "Configuration Database Health State",
+          "value": "Configuration Database Health State"
+        },
+        {
+          "key": "Cisco Secure Access",
+          "value": "Cisco Secure Access"
+        },
+        {
+          "key": "Could not get domain user groups from ISE",
+          "value": "Could not get domain user groups from ISE"
+        },
+        {
+          "key": "Device_Clock_Sync",
+          "value": "Device Clock Sync"
+        },
+        {
+          "key": "UTD_File_Analysis_Status_Event",
+          "value": "UTD File Analysis Status Event"
+        },
+        {
+          "key": "ZBFW_Session_Rate_Alert_Off",
+          "value": "ZBFW Session Rate Alert Off"
+        },
+        {
+          "key": "UTD_Update",
+          "value": "UTD Update"
+        },
+        {
+          "key": "ZBFW_Session_Maximum",
+          "value": "ZBFW Session Maximum"
+        },
+        {
+          "key": "Vmanage_Node_Reachability_State",
+          "value": "Vmanage Node Reachability State"
+        },
+        {
+          "key": "Container_Disk_Usage",
+          "value": "Container Disk Usage"
+        },
+        {
+          "key": "OSPF_Neighbor_State_Change",
+          "value": "OSPF Neighbor State Change"
+        },
+        {
+          "key": "Analytics_Directory_Usage",
+          "value": "Analytics Directory Usage"
+        },
+        {
+          "key": "Disk_Barrier",
+          "value": "Disk Barrier"
+        },
+        {
+          "key": "CPU_Usage",
+          "value": "CPU Usage"
+        },
+        {
+          "key": "SSL_Certificate_Warning",
+          "value": "SSL Certificate Warning"
+        },
+        {
+          "key": "Pim_Interface_State_Change",
+          "value": "Pim Interface State Change"
+        },
+        {
+          "key": "Memory_Usage",
+          "value": "Memory Usage"
+        },
+        {
+          "key": "UTD_Con",
+          "value": "UTD Con"
+        },
+        {
+          "key": "Analytics_Upload_Status",
+          "value": "Analytics Upload Status"
+        },
+        {
+          "key": "Files_Usage_Limit",
+          "value": "Files Usage Limit"
+        },
+        {
+          "key": "Disk_Write_Speed",
+          "value": "Disk Write Speed"
+        },
+        {
+          "key": "vManage_Queue_State",
+          "value": "vManage Queue State"
+        },
+        {
+          "key": "BGP_Peer_State_Change",
+          "value": "BGP Peer State Change"
+        },
+        {
+          "key": "Analytics_Token_Status",
+          "value": "Analytics Token Status"
+        },
+        {
+          "key": "UTD_File_Reputation_Status_Event",
+          "value": "UTD File Reputation Status Event"
+        },
+        {
+          "key": "BFD_TLOC_Down",
+          "value": "BFD TLOC Down"
+        },
+        {
+          "key": "Vmanage_Service_State",
+          "value": "Vmanage Service State"
+        },
+        {
+          "key": "Control_TLOC_Down",
+          "value": "Control TLOC Down"
+        },
+        {
+          "key": "CPU_Barrier",
+          "value": "CPU Barrier"
+        },
+        {
+          "key": "OMP_Ribout_Usage",
+          "value": "OMP Ribout Usage"
+        },
+        {
+          "key": "Cloud On Ramp",
+          "value": "Cloud On Ramp"
+        },
+        {
+          "key": "ZBFW_Half_Open_Limit_Hit",
+          "value": "ZBFW Half Open Limit Hit"
+        },
+        {
+          "key": "Auto-approval of PxGrid Account failed",
+          "value": "Auto-approval of PxGrid Account failed"
+        },
+        {
+          "key": "QFP_exmem_Usage",
+          "value": "QFP exmem Usage"
+        },
+        {
+          "key": "License not synced",
+          "value": "License not synced"
+        },
+        {
+          "key": "Could not get domain users from ISE",
+          "value": "Could not get domain users from ISE"
+        },
+        {
+          "key": "Disk_Read_Speed",
+          "value": "Disk Read Speed"
+        },
+        {
+          "key": "DHCP_Server_State_Change",
+          "value": "DHCP Server State Change"
+        },
+        {
+          "key": "Policy_Enforcement_Status",
+          "value": "Policy Enforcement Status"
+        },
+        {
+          "key": "Geo_Fence_Alert_Status",
+          "value": "Geo Fence Alert Status"
+        },
+        {
+          "key": "AAA_Password_Expiry_Warning",
+          "value": "AAA Password Expiry Warning"
+        },
+        {
+          "key": "Ise Server credentials delete failed",
+          "value": "Ise Server credentials delete failed"
+        },
+        {
+          "key": "APPQOE_ALARM",
+          "value": "APPQOE ALARM"
+        },
+        {
+          "key": "License_Out_Of_Compliance",
+          "value": "License Out Of Compliance"
+        },
+        {
+          "key": "Default App List Update",
+          "value": "Default App List Update"
+        },
+        {
+          "key": "Activation of PxGrid Account failed",
+          "value": "Activation of PxGrid Account failed"
+        },
+        {
+          "key": "Join point lookup in ISE failed",
+          "value": "Join point lookup in ISE failed"
+        },
+        {
+          "key": "Service Lookup PxGrid Get Failure",
+          "value": "Service Lookup PxGrid Get Failure"
+        }
+      ]
+    },
+    {
+      "key": "Medium",
+      "value": "Medium",
+      "associatedAlarms": [
+        {
+          "key": "WANI_Recommendation",
+          "value": "WANI Recommendation"
+        },
+        {
+          "key": "Tracker_State_Change",
+          "value": "Tracker State Change"
+        },
+        {
+          "key": "CoR SaaS - Application Path Status",
+          "value": "CoR SaaS - Application Path Status"
+        },
+        {
+          "key": "Disk_Usage",
+          "value": "Disk Usage"
+        },
+        {
+          "key": "Certificate expiring",
+          "value": "Certificate expiring"
+        },
+        {
+          "key": "PROXY_DEVICE_CERT_EXPIRED",
+          "value": "PROXY DEVICE CERT EXPIRED"
+        },
+        {
+          "key": "BGP_Router_Up",
+          "value": "BGP Router Up"
+        },
+        {
+          "key": "PROXY_CA_EXPIRED",
+          "value": "PROXY CA EXPIRED"
+        },
+        {
+          "key": "OMP_Site_Up",
+          "value": "OMP Site Up"
+        },
+        {
+          "key": "BFD_Site_Up",
+          "value": "BFD Site Up"
+        },
+        {
+          "key": "PROXY_DEVICE_CERT_EXPIRING",
+          "value": "PROXY DEVICE CERT EXPIRING"
+        },
+        {
+          "key": "Control_Vsmart_Up",
+          "value": "Control Vsmart Up"
+        },
+        {
+          "key": "Memory_Barrier",
+          "value": "Memory Barrier"
+        },
+        {
+          "key": "BFD_TLOC_Up",
+          "value": "BFD TLOC Up"
+        },
+        {
+          "key": "OMP_Node_Up",
+          "value": "OMP Node Up"
+        },
+        {
+          "key": "Configuration Database Health State",
+          "value": "Configuration Database Health State"
+        },
+        {
+          "key": "edge device doesn't support umbrella CA update",
+          "value": "edge device doesn't support umbrella CA update"
+        },
+        {
+          "key": "Vmanage_Critical_Space_Usage",
+          "value": "Vmanage Critical Space Usage"
+        },
+        {
+          "key": "OMP_State_Change",
+          "value": "OMP State Change"
+        },
+        {
+          "key": "Interface_State_Change",
+          "value": "Interface State Change"
+        },
+        {
+          "key": "Control_Vsmarts_Up",
+          "value": "Control Vsmarts Up"
+        },
+        {
+          "key": "Control_Node_Up",
+          "value": "Control Node Up"
+        },
+        {
+          "key": "Control_TLOC_Up",
+          "value": "Control TLOC Up"
+        },
+        {
+          "key": "PROXY_CA_EXPIRING",
+          "value": "PROXY CA EXPIRING"
+        },
+        {
+          "key": "Certificate_Expiration_Status",
+          "value": "Certificate Expiration Status"
+        },
+        {
+          "key": "OSPF_Neighbor_State_Change",
+          "value": "OSPF Neighbor State Change"
+        },
+        {
+          "key": "OMP_Vsmart_Up",
+          "value": "OMP Vsmart Up"
+        },
+        {
+          "key": "BFD_Node_Up",
+          "value": "BFD Node Up"
+        },
+        {
+          "key": "Analytics_Directory_Usage",
+          "value": "Analytics Directory Usage"
+        },
+        {
+          "key": "Control_Site_Up",
+          "value": "Control Site Up"
+        },
+        {
+          "key": "OSPF_Router_Up",
+          "value": "OSPF Router Up"
+        },
+        {
+          "key": "Disk_Barrier",
+          "value": "Disk Barrier"
+        },
+        {
+          "key": "CPU_Usage",
+          "value": "CPU Usage"
+        },
+        {
+          "key": "CXP_Webex_Sync_Status",
+          "value": "CXP Webex Sync Status"
+        },
+        {
+          "key": "CERT_EXPIRED",
+          "value": "CERT EXPIRED"
+        },
+        {
+          "key": "SSL_Certificate_Warning",
+          "value": "SSL Certificate Warning"
+        },
+        {
+          "key": "Memory_Usage",
+          "value": "Memory Usage"
+        },
+        {
+          "key": "System_Reboot_Issued",
+          "value": "System Reboot Issued"
+        },
+        {
+          "key": "Analytics_Upload_Status",
+          "value": "Analytics Upload Status"
+        },
+        {
+          "key": "Files_Usage_Limit",
+          "value": "Files Usage Limit"
+        },
+        {
+          "key": "MultiCloud_License_State_Change",
+          "value": "MultiCloud License State Change"
+        },
+        {
+          "key": "Disk_Write_Speed",
+          "value": "Disk Write Speed"
+        },
+        {
+          "key": "vManage_Queue_State",
+          "value": "vManage Queue State"
+        },
+        {
+          "key": "Control_Vmanage_Up",
+          "value": "Control Vmanage Up"
+        },
+        {
+          "key": "OMP_Vsmarts_Up",
+          "value": "OMP Vsmarts Up"
+        },
+        {
+          "key": "BGP_Peer_State_Change",
+          "value": "BGP Peer State Change"
+        },
+        {
+          "key": "Analytics_Token_Status",
+          "value": "Analytics Token Status"
+        },
+        {
+          "key": "Vmanage_Service_State",
+          "value": "Vmanage Service State"
+        },
+        {
+          "key": "Interface_Admin_State_Change",
+          "value": "Interface Admin State Change"
+        },
+        {
+          "key": "CPU_Barrier",
+          "value": "CPU Barrier"
+        },
+        {
+          "key": "NHRP_ALARM",
+          "value": "NHRP ALARM"
+        },
+        {
+          "key": "OMP_Ribout_Usage",
+          "value": "OMP Ribout Usage"
+        },
+        {
+          "key": "Disk_Read_Speed",
+          "value": "Disk Read Speed"
+        },
+        {
+          "key": "Geo_Fence_Alert_Status",
+          "value": "Geo Fence Alert Status"
+        },
+        {
+          "key": "Umbrella CA has been updated",
+          "value": "Umbrella CA has been updated"
+        },
+        {
+          "key": "Zscaler SSE Sublocation",
+          "value": "Zscaler SSE Sublocation"
+        },
+        {
+          "key": "APPQOE_ALARM",
+          "value": "APPQOE ALARM"
+        }
+      ]
+    },
+    {
+      "key": "Critical",
+      "value": "Critical",
+      "associatedAlarms": [
+        {
+          "key": "Device Upgrade Failed",
+          "value": "Device Upgrade Failed"
+        },
+        {
+          "key": "License report generation failure",
+          "value": "License report generation failure"
+        },
+        {
+          "key": "Certificate expiring",
+          "value": "Certificate expiring"
+        },
+        {
+          "key": "RootCA_Certificate_Warning",
+          "value": "RootCA Certificate Warning"
+        },
+        {
+          "key": "PROXY_DEVICE_CERT_EXPIRED",
+          "value": "PROXY DEVICE CERT EXPIRED"
+        },
+        {
+          "key": "BFD_Scale_Threshold",
+          "value": "BFD Scale Threshold"
+        },
+        {
+          "key": "HIGH_DIRECT_MEMORY_USAGE",
+          "value": "HIGH DIRECT MEMORY USAGE"
+        },
+        {
+          "key": "PxGrid_Connection_Notification",
+          "value": "PxGrid Connection Notification"
+        },
+        {
+          "key": "UTD_Notification",
+          "value": "UTD Notification"
+        },
+        {
+          "key": "Vmanage_Critical_Space_Usage",
+          "value": "Vmanage Critical Space Usage"
+        },
+        {
+          "key": "HTTP_PROXY_UNREACHABLE",
+          "value": "HTTP PROXY UNREACHABLE"
+        },
+        {
+          "key": "Org_Name_Change",
+          "value": "Org Name Change"
+        },
+        {
+          "key": "Interface_State_Change",
+          "value": "Interface State Change"
+        },
+        {
+          "key": "BGP_Router_Down",
+          "value": "BGP Router Down"
+        },
+        {
+          "key": "Control_Vsmart_Down",
+          "value": "Control Vsmart Down"
+        },
+        {
+          "key": "Certificate_Expiration_Status",
+          "value": "Certificate Expiration Status"
+        },
+        {
+          "key": "Vmanage_Node_Reachability_State",
+          "value": "Vmanage Node Reachability State"
+        },
+        {
+          "key": "Template_Rollback",
+          "value": "Template Rollback"
+        },
+        {
+          "key": "Process_Restart",
+          "value": "Process Restart"
+        },
+        {
+          "key": "Control_No_Active_vBond",
+          "value": "Control No Active vBond"
+        },
+        {
+          "key": "Analytics_Directory_Usage",
+          "value": "Analytics Directory Usage"
+        },
+        {
+          "key": "OMP_Ribout_Gen_Failure",
+          "value": "OMP Ribout Gen Failure"
+        },
+        {
+          "key": "CRL_UNREACHABLE_OR_INVALID",
+          "value": "CRL UNREACHABLE OR INVALID"
+        },
+        {
+          "key": "Control_Node_Down",
+          "value": "Control Node Down"
+        },
+        {
+          "key": "CERT_EXPIRED",
+          "value": "CERT EXPIRED"
+        },
+        {
+          "key": "Memory_Usage",
+          "value": "Memory Usage"
+        },
+        {
+          "key": "Files_Usage_Limit",
+          "value": "Files Usage Limit"
+        },
+        {
+          "key": "Device_Quarantine",
+          "value": "Device Quarantine"
+        },
+        {
+          "key": "MultiCloud_License_State_Change",
+          "value": "MultiCloud License State Change"
+        },
+        {
+          "key": "Disk_Write_Speed",
+          "value": "Disk Write Speed"
+        },
+        {
+          "key": "Certificate_Has_Been_Revoked",
+          "value": "Certificate Has Been Revoked"
+        },
+        {
+          "key": "Control_Site_Down",
+          "value": "Control Site Down"
+        },
+        {
+          "key": "Vmanage_Service_State",
+          "value": "Vmanage Service State"
+        },
+        {
+          "key": "vEdge_Serial_File_Uploaded",
+          "value": "vEdge Serial File Uploaded"
+        },
+        {
+          "key": "CRL_Has_Been_Enabled",
+          "value": "CRL Has Been Enabled"
+        },
+        {
+          "key": "Disaster_Recovery",
+          "value": "Disaster Recovery"
+        },
+        {
+          "key": "Interface_Admin_State_Change",
+          "value": "Interface Admin State Change"
+        },
+        {
+          "key": "CPU_Barrier",
+          "value": "CPU Barrier"
+        },
+        {
+          "key": "Unsupported_SFP_Detected",
+          "value": "Unsupported SFP Detected"
+        },
+        {
+          "key": "Container reset failed",
+          "value": "Container reset failed"
+        },
+        {
+          "key": "OMP_Ribout_Usage",
+          "value": "OMP Ribout Usage"
+        },
+        {
+          "key": "UTD_Version_Mismatch",
+          "value": "UTD Version Mismatch"
+        },
+        {
+          "key": "QFP_exmem_Usage",
+          "value": "QFP exmem Usage"
+        },
+        {
+          "key": "Container activate failed",
+          "value": "Container activate failed"
+        },
+        {
+          "key": "BFD_Node_Down",
+          "value": "BFD Node Down"
+        },
+        {
+          "key": "SUB_CA_PENDING",
+          "value": "SUB CA PENDING"
+        },
+        {
+          "key": "vManage_Self_Signed_Cert_Out_Of_Sync",
+          "value": "vManage Self Signed Cert Out Of Sync"
+        },
+        {
+          "key": "Device Activation Failed",
+          "value": "Device Activation Failed"
+        },
+        {
+          "key": "failed to update umbrella CA",
+          "value": "failed to update umbrella CA"
+        },
+        {
+          "key": "UTD signature package installation failed",
+          "value": "UTD signature package installation failed"
+        },
+        {
+          "key": "APPQOE_ALARM",
+          "value": "APPQOE ALARM"
+        },
+        {
+          "key": "Container App installation failed",
+          "value": "Container App installation failed"
+        },
+        {
+          "key": "WebServer_Certificate_Warning",
+          "value": "WebServer Certificate Warning"
+        },
+        {
+          "key": "Container upgrade failed",
+          "value": "Container upgrade failed"
+        },
+        {
+          "key": "Disk_Usage",
+          "value": "Disk Usage"
+        },
+        {
+          "key": "ZTP Upgrade Failed",
+          "value": "ZTP Upgrade Failed"
+        },
+        {
+          "key": "PROXY_CA_EXPIRED",
+          "value": "PROXY CA EXPIRED"
+        },
+        {
+          "key": "PROXY_DEVICE_CERT_EXPIRING",
+          "value": "PROXY DEVICE CERT EXPIRING"
+        },
+        {
+          "key": "OMP_Vsmart_Down",
+          "value": "OMP Vsmart Down"
+        },
+        {
+          "key": "Quarantine_Monitoring_Thread",
+          "value": "Quarantine Monitoring Thread"
+        },
+        {
+          "key": "Memory_Barrier",
+          "value": "Memory Barrier"
+        },
+        {
+          "key": "OSPF_Router_Down",
+          "value": "OSPF Router Down"
+        },
+        {
+          "key": "Cloned_Vedge_Detected",
+          "value": "Cloned Vedge Detected"
+        },
+        {
+          "key": "System_IP_Reuse",
+          "value": "System IP Reuse"
+        },
+        {
+          "key": "Control_vBond_State_Change",
+          "value": "Control vBond State Change"
+        },
+        {
+          "key": "System-IP_Change",
+          "value": "System-IP Change"
+        },
+        {
+          "key": "Configuration Database Health State",
+          "value": "Configuration Database Health State"
+        },
+        {
+          "key": "AppQoe service node state",
+          "value": "AppQoe service node state"
+        },
+        {
+          "key": "Out Of Compliance",
+          "value": "Out Of Compliance"
+        },
+        {
+          "key": "OMP_All_Vsmarts_Down",
+          "value": "OMP All Vsmarts Down"
+        },
+        {
+          "key": "OMP_State_Change",
+          "value": "OMP State Change"
+        },
+        {
+          "key": "Certificate_Renewal_Status",
+          "value": "Certificate Renewal Status"
+        },
+        {
+          "key": "Control_All_Vsmarts_Down",
+          "value": "Control All Vsmarts Down"
+        },
+        {
+          "key": "OMP_Node_Down",
+          "value": "OMP Node Down"
+        },
+        {
+          "key": "UTD_File_Reputation_Alert",
+          "value": "UTD File Reputation Alert"
+        },
+        {
+          "key": "Domain-ID_Change",
+          "value": "Domain-ID Change"
+        },
+        {
+          "key": "SD-AVC_Password_Sync",
+          "value": "SD-AVC Password Sync"
+        },
+        {
+          "key": "vSmart/vManage_Serial_File_Uploaded",
+          "value": "vSmart/vManage Serial File Uploaded"
+        },
+        {
+          "key": "PROXY_CA_EXPIRING",
+          "value": "PROXY CA EXPIRING"
+        },
+        {
+          "key": "BFD_Site_Down",
+          "value": "BFD Site Down"
+        },
+        {
+          "key": "ROOTCA_SYNC_FAILURE",
+          "value": "ROOTCA SYNC FAILURE"
+        },
+        {
+          "key": "Site-ID_Change",
+          "value": "Site-ID Change"
+        },
+        {
+          "key": "Disk_Barrier",
+          "value": "Disk Barrier"
+        },
+        {
+          "key": "CPU_Usage",
+          "value": "CPU Usage"
+        },
+        {
+          "key": "CXP_Webex_Sync_Status",
+          "value": "CXP Webex Sync Status"
+        },
+        {
+          "key": "Control_Vmanage_Down",
+          "value": "Control Vmanage Down"
+        },
+        {
+          "key": "SSL_Certificate_Warning",
+          "value": "SSL Certificate Warning"
+        },
+        {
+          "key": "Clear_Installed_Certificate",
+          "value": "Clear Installed Certificate"
+        },
+        {
+          "key": "System_Reboot_Issued",
+          "value": "System Reboot Issued"
+        },
+        {
+          "key": "System_License_Mismatch",
+          "value": "System License Mismatch"
+        },
+        {
+          "key": "AAA_Password_Expired",
+          "value": "AAA Password Expired"
+        },
+        {
+          "key": "UTD_IPS_Alert",
+          "value": "UTD IPS Alert"
+        },
+        {
+          "key": "NHRP_ALARM",
+          "value": "NHRP ALARM"
+        },
+        {
+          "key": "Acknowledgement file not uploaded",
+          "value": "Acknowledgement file not uploaded"
+        },
+        {
+          "key": "AppQoe site id mismatch",
+          "value": "AppQoe site id mismatch"
+        },
+        {
+          "key": "Security_Certificate_Expired",
+          "value": "Security Certificate Expired"
+        },
+        {
+          "key": "Certificate_CRL_Has_Been_Disabled",
+          "value": "Certificate CRL Has Been Disabled"
+        },
+        {
+          "key": "Disk_Read_Speed",
+          "value": "Disk Read Speed"
+        },
+        {
+          "key": "CRL_Has_Been_Disabled",
+          "value": "CRL Has Been Disabled"
+        },
+        {
+          "key": "aaa_Admin_Password_Change",
+          "value": "aaa Admin Password Change"
+        },
+        {
+          "key": "UTD_File_Reputation_Retrospective_Alert",
+          "value": "UTD File Reputation Retrospective Alert"
+        },
+        {
+          "key": "OMP_Site_Down",
+          "value": "OMP Site Down"
+        },
+        {
+          "key": "Geo_Fence_Alert_Status",
+          "value": "Geo Fence Alert Status"
+        },
+        {
+          "key": "Container reload failed",
+          "value": "Container reload failed"
+        }
+      ]
+    },
+    {
+      "key": "Minor",
+      "value": "Minor",
+      "associatedAlarms": [
+        {
+          "key": "System_Reboot_Complete",
+          "value": "System Reboot Complete"
+        },
+        {
+          "key": "CoR SaaS - Application Path Status",
+          "value": "CoR SaaS - Application Path Status"
+        },
+        {
+          "key": "Disk_Usage",
+          "value": "Disk Usage"
+        },
+        {
+          "key": "Analytics_Upload_Status",
+          "value": "Analytics Upload Status"
+        },
+        {
+          "key": "Certificate expiring",
+          "value": "Certificate expiring"
+        },
+        {
+          "key": "Files_Usage_Limit",
+          "value": "Files Usage Limit"
+        },
+        {
+          "key": "Device_Quarantine",
+          "value": "Device Quarantine"
+        },
+        {
+          "key": "RootCA_Certificate_Warning",
+          "value": "RootCA Certificate Warning"
+        },
+        {
+          "key": "PROXY_DEVICE_CERT_EXPIRED",
+          "value": "PROXY DEVICE CERT EXPIRED"
+        },
+        {
+          "key": "Disk_Write_Speed",
+          "value": "Disk Write Speed"
+        },
+        {
+          "key": "API_VOLUME_MONITOR",
+          "value": "API VOLUME MONITOR"
+        },
+        {
+          "key": "BFD_Scale_Threshold",
+          "value": "BFD Scale Threshold"
+        },
+        {
+          "key": "Analytics_Token_Status",
+          "value": "Analytics Token Status"
+        },
+        {
+          "key": "PROXY_CA_EXPIRED",
+          "value": "PROXY CA EXPIRED"
+        },
+        {
+          "key": "Nat_Update",
+          "value": "Nat Update"
+        },
+        {
+          "key": "SD-AVC_State_Change",
+          "value": "SD-AVC State Change"
+        },
+        {
+          "key": "PROXY_DEVICE_CERT_EXPIRING",
+          "value": "PROXY DEVICE CERT EXPIRING"
+        },
+        {
+          "key": "Quarantine_Monitoring_Thread",
+          "value": "Quarantine Monitoring Thread"
+        },
+        {
+          "key": "Memory_Barrier",
+          "value": "Memory Barrier"
+        },
+        {
+          "key": "Disaster_Recovery",
+          "value": "Disaster Recovery"
+        },
+        {
+          "key": "CPU_Barrier",
+          "value": "CPU Barrier"
+        },
+        {
+          "key": "Device_Clock_Sync",
+          "value": "Device Clock Sync"
+        },
+        {
+          "key": "Root_Cert_Chain_Installed",
+          "value": "Root Cert Chain Installed"
+        },
+        {
+          "key": "OMP_Ribout_Usage",
+          "value": "OMP Ribout Usage"
+        },
+        {
+          "key": "QFP_exmem_Usage",
+          "value": "QFP exmem Usage"
+        },
+        {
+          "key": "Root_Cert_Chain_Uninstalled",
+          "value": "Root Cert Chain Uninstalled"
+        },
+        {
+          "key": "Disk_Read_Speed",
+          "value": "Disk Read Speed"
+        },
+        {
+          "key": "SLA_Violation_Packet_Drop",
+          "value": "SLA Violation Packet Drop"
+        },
+        {
+          "key": "SD-AVC_Password_Sync",
+          "value": "SD-AVC Password Sync"
+        },
+        {
+          "key": "PROXY_CA_EXPIRING",
+          "value": "PROXY CA EXPIRING"
+        },
+        {
+          "key": "Certificate_Expiration_Status",
+          "value": "Certificate Expiration Status"
+        },
+        {
+          "key": "Container_Disk_Usage",
+          "value": "Container Disk Usage"
+        },
+        {
+          "key": "SLA_Violation",
+          "value": "SLA Violation"
+        },
+        {
+          "key": "Policy_Enforcement_Status",
+          "value": "Policy Enforcement Status"
+        },
+        {
+          "key": "Analytics_Directory_Usage",
+          "value": "Analytics Directory Usage"
+        },
+        {
+          "key": "Disk_Barrier",
+          "value": "Disk Barrier"
+        },
+        {
+          "key": "CPU_Usage",
+          "value": "CPU Usage"
+        },
+        {
+          "key": "New_CSR_Generated",
+          "value": "New CSR Generated"
+        },
+        {
+          "key": "CERT_EXPIRED",
+          "value": "CERT EXPIRED"
+        },
+        {
+          "key": "SSL_Certificate_Warning",
+          "value": "SSL Certificate Warning"
+        },
+        {
+          "key": "APPQOE_ALARM",
+          "value": "APPQOE ALARM"
+        },
+        {
+          "key": "Memory_Usage",
+          "value": "Memory Usage"
+        },
+        {
+          "key": "Pseudo_Commit_Status",
+          "value": "Pseudo Commit Status"
+        }
+      ]
+    }
+  ]
+}

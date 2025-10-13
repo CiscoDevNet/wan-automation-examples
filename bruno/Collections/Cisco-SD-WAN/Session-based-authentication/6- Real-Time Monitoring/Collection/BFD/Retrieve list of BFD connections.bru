@@ -1,0 +1,19 @@
+meta {
+  name: Retrieve list of BFD connections
+  type: http
+  seq: 11
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device/bfd/links?state={{state}}
+  body: none
+  auth: none
+}
+
+params:query {
+  state: {{state}}
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+}

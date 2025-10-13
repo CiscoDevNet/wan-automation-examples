@@ -1,0 +1,8 @@
+sdwan:
+  configuration_groups:
+    - name: TF_SDWAN_EDGE
+      description: Terraform - Configuration Group
+      cli_profile: TF_SDWAN_CLI
+      system_profile: TF_SDWAN_SYSTEM
+      transport_profile: TF_SDWAN_TRANSPORT
+      service_profile: TF_SDWAN_SERVICE

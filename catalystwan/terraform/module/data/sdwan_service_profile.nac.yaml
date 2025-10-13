@@ -1,0 +1,6 @@
+sdwan:
+  feature_profiles:
+    service_profiles:
+      - name: TF_SDWAN_SERVICE
+        description: Terraform - Service Profile
+

@@ -1,0 +1,45 @@
+sdwan:
+  feature_profiles:
+    transport_profiles:
+      - name: TF_SDWAN_TRANSPORT
+        description: Terraform - Transport Profile
+        wan_vpn:
+          name: wan_vpn
+          ipv4_primary_dns_address: 172.16.1.254
+          ipv4_secondary_dns_address: 172.16.2.254
+          enhance_ecmp_keying: true
+          ipv4_static_routes:
+            - network_address: 0.0.0.0
+              subnet_mask: 0.0.0.0
+              next_hops:
+                - address_variable: vpn0_default_gw1
+                - address_variable: vpn0_default_gw2
+          ethernet_interfaces:
+            - name: inet_tloc
+              interface_name_variable: vpn0_inet_name
+              interface_description: INET
+              shutdown_variable: vpn0_inet_shutdown
+              ipv4_configuration_type: static
+              ipv6_configuration_type: none
+              ipv4_address_variable: vpn0_inet_ipv4_address
+              ipv4_subnet_mask: 255.255.255.0
+              ipv4_nat: true
+              tunnel_interface:
+                color: biz-internet
+                restrict: true
+                ipsec_encapsulation: true
+                ipsec_preference_variable: vpn0_inet_preference
+            - name: mpls_tloc
+              interface_name_variable: vpn0_mpls_name
+              interface_description: MPLS
+              shutdown_variable: vpn0_mpls_shutdown
+              ipv4_configuration_type: static
+              ipv6_configuration_type: none
+              ipv4_address_variable: vpn0_mpls_ipv4_address
+              ipv4_subnet_mask: 255.255.255.0
+              ipv4_nat: false
+              tunnel_interface:
+                color: mpls
+                restrict: true
+                ipsec_encapsulation: true
+                ipsec_preference_variable: vpn0_mpls_preference

@@ -1,0 +1,29 @@
+# Update with your own parameters
+manager:
+  username: <admin>
+  password: <mysuperpassword>
+  url: https://<manager-ip-address>
+system:
+  location: Paris
+  gps_longitude: -77
+  gps_latitude: 38
+transport:
+  primary_dns_address_ipv4: 172.16.1.254
+  secondary_dns_address_ipv4: 172.16.2.254
+  gateway_inet: 172.16.1.254
+  gateway_mpls: 172.16.2.254
+  interface_inet_name: GigabitEthernet1
+  interface_inet_ip: 172.16.1.6
+  interface_mpls_name: GigabitEthernet2
+  interface_mpls_ip: 172.16.2.6
+mrf:
+  region_id: 2
+  role: edge-router
+service:
+  vpn_number: 1
+  vpn_name: VPN1
+  primary_dns_address_ipv4: 10.1.1.254
+  secondary_dns_address_ipv4: 10.1.1.253
+  interface_name: Loopback10
+  interface_ip_address: 10.1.1.6
+  interface_ip_mask: 255.255.255.255

@@ -1,0 +1,1027 @@
+{
+  "header": {
+    "generatedOn": 1756385486757
+  },
+  "data": [
+    {
+      "key": "system-software-install-change",
+      "value": "system-software-install-change"
+    },
+    {
+      "key": "system-software-install-status",
+      "value": "system-software-install-status"
+    },
+    {
+      "key": "system-firmware-install-status",
+      "value": "system-firmware-install-status"
+    },
+    {
+      "key": "im-event",
+      "value": "im-event"
+    },
+    {
+      "key": "utd-notification",
+      "value": "utd-notification"
+    },
+    {
+      "key": "utd-update",
+      "value": "utd-update"
+    },
+    {
+      "key": "utd-ips-alert",
+      "value": "utd-ips-alert"
+    },
+    {
+      "key": "utd-engine-status",
+      "value": "utd-engine-status"
+    },
+    {
+      "key": "utd-sessions-max",
+      "value": "utd-sessions-max"
+    },
+    {
+      "key": "utd-version-mismatch",
+      "value": "utd-version-mismatch"
+    },
+    {
+      "key": "utd-file-reputation-retrospective-alert",
+      "value": "utd-file-reputation-retrospective-alert"
+    },
+    {
+      "key": "utd-file-analysis-upload-state",
+      "value": "utd-file-analysis-upload-state"
+    },
+    {
+      "key": "utd-file-reputation-alert",
+      "value": "utd-file-reputation-alert"
+    },
+    {
+      "key": "utd-file-analysis-status-event",
+      "value": "utd-file-analysis-status-event"
+    },
+    {
+      "key": "utd-file-reputation-status-event",
+      "value": "utd-file-reputation-status-event"
+    },
+    {
+      "key": "utd-con",
+      "value": "utd-con"
+    },
+    {
+      "key": "appqoe-event",
+      "value": "appqoe-event"
+    },
+    {
+      "key": "data-policy-association-status",
+      "value": "data-policy-association-status"
+    },
+    {
+      "key": "access-list-association-status",
+      "value": "access-list-association-status"
+    },
+    {
+      "key": "device-policy-association-status",
+      "value": "device-policy-association-status"
+    },
+    {
+      "key": "umbrella-anycast-server-switch",
+      "value": "umbrella-anycast-server-switch"
+    },
+    {
+      "key": "system-software-patch-change",
+      "value": "system-software-patch-change"
+    },
+    {
+      "key": "system-software-install-complete-change",
+      "value": "system-software-install-complete-change"
+    },
+    {
+      "key": "bfd-state-change",
+      "value": "bfd-state-change"
+    },
+    {
+      "key": "bfd-scale-threshold",
+      "value": "bfd-scale-threshold"
+    },
+    {
+      "key": "flash-fault",
+      "value": "flash-fault"
+    },
+    {
+      "key": "emmc-fault",
+      "value": "emmc-fault"
+    },
+    {
+      "key": "sdcard-fault",
+      "value": "sdcard-fault"
+    },
+    {
+      "key": "tempsensor-fault",
+      "value": "tempsensor-fault"
+    },
+    {
+      "key": "tempsensor-state",
+      "value": "tempsensor-state"
+    },
+    {
+      "key": "fan-fault",
+      "value": "fan-fault"
+    },
+    {
+      "key": "fantray-fault",
+      "value": "fantray-fault"
+    },
+    {
+      "key": "pem-fault",
+      "value": "pem-fault"
+    },
+    {
+      "key": "pem-state-change",
+      "value": "pem-state-change"
+    },
+    {
+      "key": "pim-fault",
+      "value": "pim-fault"
+    },
+    {
+      "key": "pim-state-change",
+      "value": "pim-state-change"
+    },
+    {
+      "key": "sfp-state-change",
+      "value": "sfp-state-change"
+    },
+    {
+      "key": "usb-state-change",
+      "value": "usb-state-change"
+    },
+    {
+      "key": "sfp-support-state",
+      "value": "sfp-support-state"
+    },
+    {
+      "key": "omp-number-of-vsmarts-change",
+      "value": "omp-number-of-vsmarts-change"
+    },
+    {
+      "key": "omp-ro-gen-failure",
+      "value": "omp-ro-gen-failure"
+    },
+    {
+      "key": "omp-state-change",
+      "value": "omp-state-change"
+    },
+    {
+      "key": "omp-peer-state-change",
+      "value": "omp-peer-state-change"
+    },
+    {
+      "key": "omp-tloc-state-change",
+      "value": "omp-tloc-state-change"
+    },
+    {
+      "key": "omp-data-policy",
+      "value": "omp-data-policy"
+    },
+    {
+      "key": "omp-policy",
+      "value": "omp-policy"
+    },
+    {
+      "key": "control-connection-state-change",
+      "value": "control-connection-state-change"
+    },
+    {
+      "key": "control-connection-auth-fail",
+      "value": "control-connection-auth-fail"
+    },
+    {
+      "key": "control-vbond-state-change",
+      "value": "control-vbond-state-change"
+    },
+    {
+      "key": "control-connection-tloc-ip-change",
+      "value": "control-connection-tloc-ip-change"
+    },
+    {
+      "key": "control-no-active-vsmart",
+      "value": "control-no-active-vsmart"
+    },
+    {
+      "key": "control-no-active-vbond",
+      "value": "control-no-active-vbond"
+    },
+    {
+      "key": "control-vedge-list-request",
+      "value": "control-vedge-list-request"
+    },
+    {
+      "key": "tunnel-ipsec-rekey",
+      "value": "tunnel-ipsec-rekey"
+    },
+    {
+      "key": "tunnel-ipsec-manual-rekey",
+      "value": "tunnel-ipsec-manual-rekey"
+    },
+    {
+      "key": "tunnel-ipsec-auto-recover-rekey",
+      "value": "tunnel-ipsec-auto-recover-rekey"
+    },
+    {
+      "key": "security-root-cert-chain-installed",
+      "value": "security-root-cert-chain-installed"
+    },
+    {
+      "key": "pki-certificate-event",
+      "value": "pki-certificate-event"
+    },
+    {
+      "key": "pki-certificate-expiry",
+      "value": "pki-certificate-expiry"
+    },
+    {
+      "key": "security-certificate-installed",
+      "value": "security-certificate-installed"
+    },
+    {
+      "key": "service-gre-state-update",
+      "value": "service-gre-state-update"
+    },
+    {
+      "key": "security-new-csr-generated",
+      "value": "security-new-csr-generated"
+    },
+    {
+      "key": "security-root-cert-chain-uninstalled",
+      "value": "security-root-cert-chain-uninstalled"
+    },
+    {
+      "key": "security-clear-installed-certificate",
+      "value": "security-clear-installed-certificate"
+    },
+    {
+      "key": "security-vedge-serial-file-uploaded",
+      "value": "security-vedge-serial-file-uploaded"
+    },
+    {
+      "key": "security-vsmart-serial-file-uploaded",
+      "value": "security-vsmart-serial-file-uploaded"
+    },
+    {
+      "key": "security-vedge-entry-added",
+      "value": "security-vedge-entry-added"
+    },
+    {
+      "key": "security-vedge-entry-removed",
+      "value": "security-vedge-entry-removed"
+    },
+    {
+      "key": "security-unclaimed-vedge-entry-added",
+      "value": "security-unclaimed-vedge-entry-added"
+    },
+    {
+      "key": "security-vsmart-entry-added",
+      "value": "security-vsmart-entry-added"
+    },
+    {
+      "key": "security-vsmart-entry-removed",
+      "value": "security-vsmart-entry-removed"
+    },
+    {
+      "key": "ssl-certificate-warning",
+      "value": "ssl-certificate-warning"
+    },
+    {
+      "key": "security-certificate-expired",
+      "value": "security-certificate-expired"
+    },
+    {
+      "key": "certificate-quarantined",
+      "value": "certificate-quarantined"
+    },
+    {
+      "key": "quarantine-thread",
+      "value": "quarantine-thread"
+    },
+    {
+      "key": "vbond-reject-vedge-connection",
+      "value": "vbond-reject-vedge-connection"
+    },
+    {
+      "key": "device-template-missing",
+      "value": "device-template-missing"
+    },
+    {
+      "key": "device-template-attached-during-ztp",
+      "value": "device-template-attached-during-ztp"
+    },
+    {
+      "key": "process-restart",
+      "value": "process-restart"
+    },
+    {
+      "key": "process-down",
+      "value": "process-down"
+    },
+    {
+      "key": "reboot-aborted",
+      "value": "reboot-aborted"
+    },
+    {
+      "key": "disk-usage",
+      "value": "disk-usage"
+    },
+    {
+      "key": "memory-usage",
+      "value": "memory-usage"
+    },
+    {
+      "key": "aaa-admin-pwd-change",
+      "value": "aaa-admin-pwd-change"
+    },
+    {
+      "key": "site-id-change",
+      "value": "site-id-change"
+    },
+    {
+      "key": "domain-id-change",
+      "value": "domain-id-change"
+    },
+    {
+      "key": "system-ip-change",
+      "value": "system-ip-change"
+    },
+    {
+      "key": "org-name-change",
+      "value": "org-name-change"
+    },
+    {
+      "key": "system-login-change",
+      "value": "system-login-change"
+    },
+    {
+      "key": "system-logout-change",
+      "value": "system-logout-change"
+    },
+    {
+      "key": "system-aaa-login-fail",
+      "value": "system-aaa-login-fail"
+    },
+    {
+      "key": "cpu-usage",
+      "value": "cpu-usage"
+    },
+    {
+      "key": "system-commit",
+      "value": "system-commit"
+    },
+    {
+      "key": "pseudo-commit-status",
+      "value": "pseudo-commit-status"
+    },
+    {
+      "key": "bgp-peer-state-change",
+      "value": "bgp-peer-state-change"
+    },
+    {
+      "key": "interface-state-change",
+      "value": "interface-state-change"
+    },
+    {
+      "key": "interface-bw",
+      "value": "interface-bw"
+    },
+    {
+      "key": "interface-auto-bw",
+      "value": "interface-auto-bw"
+    },
+    {
+      "key": "route-install-fail",
+      "value": "route-install-fail"
+    },
+    {
+      "key": "tunnel-install-fail",
+      "value": "tunnel-install-fail"
+    },
+    {
+      "key": "vrrp-group-state-change",
+      "value": "vrrp-group-state-change"
+    },
+    {
+      "key": "ospf-neighbor-state-change",
+      "value": "ospf-neighbor-state-change"
+    },
+    {
+      "key": "ospf-interface-state-change",
+      "value": "ospf-interface-state-change"
+    },
+    {
+      "key": "pim-neighbor-state-change",
+      "value": "pim-neighbor-state-change"
+    },
+    {
+      "key": "pim-interface-state-change",
+      "value": "pim-interface-state-change"
+    },
+    {
+      "key": "pim-tunnel-state-change",
+      "value": "pim-tunnel-state-change"
+    },
+    {
+      "key": "pim-tunnel-change",
+      "value": "pim-tunnel-change"
+    },
+    {
+      "key": "system-reboot-issued",
+      "value": "system-reboot-issued"
+    },
+    {
+      "key": "system-reboot-complete",
+      "value": "system-reboot-complete"
+    },
+    {
+      "key": "dhcp-address-assigned",
+      "value": "dhcp-address-assigned"
+    },
+    {
+      "key": "dhcp-address-renewed",
+      "value": "dhcp-address-renewed"
+    },
+    {
+      "key": "dhcp-address-released",
+      "value": "dhcp-address-released"
+    },
+    {
+      "key": "dhcp-request-rejected",
+      "value": "dhcp-request-rejected"
+    },
+    {
+      "key": "dhcp-address-rejected",
+      "value": "dhcp-address-rejected"
+    },
+    {
+      "key": "dhcp-server-state-change",
+      "value": "dhcp-server-state-change"
+    },
+    {
+      "key": "sla-change",
+      "value": "sla-change"
+    },
+    {
+      "key": "sla-violation",
+      "value": "sla-violation"
+    },
+    {
+      "key": "sla-violation-pkt-drop",
+      "value": "sla-violation-pkt-drop"
+    },
+    {
+      "key": "fib-update",
+      "value": "fib-update"
+    },
+    {
+      "key": "fib-updates",
+      "value": "fib-updates"
+    },
+    {
+      "key": "bridge-creation",
+      "value": "bridge-creation"
+    },
+    {
+      "key": "bridge-deletion",
+      "value": "bridge-deletion"
+    },
+    {
+      "key": "bridge-interface-state-change",
+      "value": "bridge-interface-state-change"
+    },
+    {
+      "key": "bridge-max-mac-reached",
+      "value": "bridge-max-mac-reached"
+    },
+    {
+      "key": "app-dpi-flows-out-of-memory",
+      "value": "app-dpi-flows-out-of-memory"
+    },
+    {
+      "key": "app-dpi-flows-write-failed-vedge",
+      "value": "app-dpi-flows-write-failed-vedge"
+    },
+    {
+      "key": "data-block-create",
+      "value": "data-block-create"
+    },
+    {
+      "key": "data-block-delete",
+      "value": "data-block-delete"
+    },
+    {
+      "key": "vmanage-connection-preference-changed",
+      "value": "vmanage-connection-preference-changed"
+    },
+    {
+      "key": "cloudexpress-application-change",
+      "value": "cloudexpress-application-change"
+    },
+    {
+      "key": "cloudexpress-score-change",
+      "value": "cloudexpress-score-change"
+    },
+    {
+      "key": "cloudexpress-max-local-exit-exceeded",
+      "value": "cloudexpress-max-local-exit-exceeded"
+    },
+    {
+      "key": "sim-state-change",
+      "value": "sim-state-change"
+    },
+    {
+      "key": "interface-admin-state-change",
+      "value": "interface-admin-state-change"
+    },
+    {
+      "key": "endpoint_tracker_state_change",
+      "value": "endpoint_tracker_state_change"
+    },
+    {
+      "key": "domain-state-change",
+      "value": "domain-state-change"
+    },
+    {
+      "key": "reg-state-change",
+      "value": "reg-state-change"
+    },
+    {
+      "key": "bearer-change",
+      "value": "bearer-change"
+    },
+    {
+      "key": "zbfw-flow-creation",
+      "value": "zbfw-flow-creation"
+    },
+    {
+      "key": "zbfw-flow-deletion",
+      "value": "zbfw-flow-deletion"
+    },
+    {
+      "key": "zbfw-clear-flow-table-full",
+      "value": "zbfw-clear-flow-table-full"
+    },
+    {
+      "key": "zbfw-pkt-log",
+      "value": "zbfw-pkt-log"
+    },
+    {
+      "key": "zbfw-sessions-maximum",
+      "value": "zbfw-sessions-maximum"
+    },
+    {
+      "key": "zbfw-sess-rate-alert-on",
+      "value": "zbfw-sess-rate-alert-on"
+    },
+    {
+      "key": "zbfw-sess-rate-alert-off",
+      "value": "zbfw-sess-rate-alert-off"
+    },
+    {
+      "key": "zbfw-flow-table-full",
+      "value": "zbfw-flow-table-full"
+    },
+    {
+      "key": "zbfw-half-open-limit-hit",
+      "value": "zbfw-half-open-limit-hit"
+    },
+    {
+      "key": "sla-config",
+      "value": "sla-config"
+    },
+    {
+      "key": "NETWORK_CREATE",
+      "value": "NETWORK_CREATE"
+    },
+    {
+      "key": "NETWORK_DELETE",
+      "value": "NETWORK_DELETE"
+    },
+    {
+      "key": "BRIDGE_CREATE",
+      "value": "BRIDGE_CREATE"
+    },
+    {
+      "key": "BRIDGE_UPDATE",
+      "value": "BRIDGE_UPDATE"
+    },
+    {
+      "key": "BRIDGE_DELETE",
+      "value": "BRIDGE_DELETE"
+    },
+    {
+      "key": "WAN_DHCP_RENEW",
+      "value": "WAN_DHCP_RENEW"
+    },
+    {
+      "key": "MGMT_DHCP_RENEW",
+      "value": "MGMT_DHCP_RENEW"
+    },
+    {
+      "key": "INTF_STATUS_CHANGE",
+      "value": "INTF_STATUS_CHANGE"
+    },
+    {
+      "key": "UPGRADE_REGISTER",
+      "value": "UPGRADE_REGISTER"
+    },
+    {
+      "key": "out-of-compliance",
+      "value": "out-of-compliance"
+    },
+    {
+      "key": "UPGRADE_APPLY",
+      "value": "UPGRADE_APPLY"
+    },
+    {
+      "key": "RBAC_USER_CREATE",
+      "value": "RBAC_USER_CREATE"
+    },
+    {
+      "key": "RBAC_USER_PASSWORD_UPDATE",
+      "value": "RBAC_USER_PASSWORD_UPDATE"
+    },
+    {
+      "key": "RBAC_USER_ROLE_UPDATE",
+      "value": "RBAC_USER_ROLE_UPDATE"
+    },
+    {
+      "key": "RBAC_USER_DELETE",
+      "value": "RBAC_USER_DELETE"
+    },
+    {
+      "key": "RBAC_USERS_INACTIVATED",
+      "value": "RBAC_USERS_INACTIVATED"
+    },
+    {
+      "key": "RBAC_USER_ACTIVATED",
+      "value": "RBAC_USER_ACTIVATED"
+    },
+    {
+      "key": "RBAC_PWD_EXPIRED",
+      "value": "RBAC_PWD_EXPIRED"
+    },
+    {
+      "key": "SECURITY_SERVER_CREATE",
+      "value": "SECURITY_SERVER_CREATE"
+    },
+    {
+      "key": "SECURITY_SERVER_UPDATE",
+      "value": "SECURITY_SERVER_UPDATE"
+    },
+    {
+      "key": "SECURITY_SERVER_DELETE",
+      "value": "SECURITY_SERVER_DELETE"
+    },
+    {
+      "key": "AAA_TYPE_CREATE",
+      "value": "AAA_TYPE_CREATE"
+    },
+    {
+      "key": "AAA_TYPE_UPDATE",
+      "value": "AAA_TYPE_UPDATE"
+    },
+    {
+      "key": "CERT_SWITCH_CERT",
+      "value": "CERT_SWITCH_CERT"
+    },
+    {
+      "key": "CERT_CSR_CREATE",
+      "value": "CERT_CSR_CREATE"
+    },
+    {
+      "key": "CERT_CA_CERT_INSTALL",
+      "value": "CERT_CA_CERT_INSTALL"
+    },
+    {
+      "key": "REBOOT",
+      "value": "REBOOT"
+    },
+    {
+      "key": "SHUTDOWN",
+      "value": "SHUTDOWN"
+    },
+    {
+      "key": "LOGGING_FAILURE",
+      "value": "LOGGING_FAILURE"
+    },
+    {
+      "key": "DISK_SPACE_ALMOST_FULL",
+      "value": "DISK_SPACE_ALMOST_FULL"
+    },
+    {
+      "key": "ROTATED_LOGS_DELETE",
+      "value": "ROTATED_LOGS_DELETE"
+    },
+    {
+      "key": "TIME_UPDATE",
+      "value": "TIME_UPDATE"
+    },
+    {
+      "key": "TIMEZONE_UPDATE",
+      "value": "TIMEZONE_UPDATE"
+    },
+    {
+      "key": "FILE_COPY_STATUS",
+      "value": "FILE_COPY_STATUS"
+    },
+    {
+      "key": "FILE_DOWNLOAD_STATUS",
+      "value": "FILE_DOWNLOAD_STATUS"
+    },
+    {
+      "key": "FILE_DOWNLOAD_START",
+      "value": "FILE_DOWNLOAD_START"
+    },
+    {
+      "key": "FILE_DOWNLOAD_VERIFIED",
+      "value": "FILE_DOWNLOAD_VERIFIED"
+    },
+    {
+      "key": "FILE_DOWNLOAD_DONE",
+      "value": "FILE_DOWNLOAD_DONE"
+    },
+    {
+      "key": "FILE_DOWNLOAD_FAILED",
+      "value": "FILE_DOWNLOAD_FAILED"
+    },
+    {
+      "key": "CREATE_IMAGE",
+      "value": "CREATE_IMAGE"
+    },
+    {
+      "key": "DELETE_IMAGE",
+      "value": "DELETE_IMAGE"
+    },
+    {
+      "key": "CREATE_FLAVOR",
+      "value": "CREATE_FLAVOR"
+    },
+    {
+      "key": "VM_DEPLOYED",
+      "value": "VM_DEPLOYED"
+    },
+    {
+      "key": "VM_ALIVE",
+      "value": "VM_ALIVE"
+    },
+    {
+      "key": "SERVICE_ALIVE",
+      "value": "SERVICE_ALIVE"
+    },
+    {
+      "key": "VM_UNDEPLOYED",
+      "value": "VM_UNDEPLOYED"
+    },
+    {
+      "key": "SERVICE_UNDEPLOYED",
+      "value": "SERVICE_UNDEPLOYED"
+    },
+    {
+      "key": "SERVICE_UPDATED",
+      "value": "SERVICE_UPDATED"
+    },
+    {
+      "key": "VM_STOPPED",
+      "value": "VM_STOPPED"
+    },
+    {
+      "key": "VM_STARTED",
+      "value": "VM_STARTED"
+    },
+    {
+      "key": "VM_UPDATED",
+      "value": "VM_UPDATED"
+    },
+    {
+      "key": "VM_REBOOTED",
+      "value": "VM_REBOOTED"
+    },
+    {
+      "key": "VM_RECOVERY_INIT",
+      "value": "VM_RECOVERY_INIT"
+    },
+    {
+      "key": "VM_RECOVERY_REBOOT",
+      "value": "VM_RECOVERY_REBOOT"
+    },
+    {
+      "key": "VM_RECOVERY_COMPLETE",
+      "value": "VM_RECOVERY_COMPLETE"
+    },
+    {
+      "key": "VM_MONITOR_UNSET",
+      "value": "VM_MONITOR_UNSET"
+    },
+    {
+      "key": "VM_MONITOR_SET",
+      "value": "VM_MONITOR_SET"
+    },
+    {
+      "key": "CIMC_PASSWORD_UPDATE",
+      "value": "CIMC_PASSWORD_UPDATE"
+    },
+    {
+      "key": "FACTORY_RESET",
+      "value": "FACTORY_RESET"
+    },
+    {
+      "key": "CPU_USAGE_HIGH",
+      "value": "CPU_USAGE_HIGH"
+    },
+    {
+      "key": "viptela",
+      "value": "viptela"
+    },
+    {
+      "key": "ccmEvent",
+      "value": "ccmEvent"
+    },
+    {
+      "key": "umbrella-registration-success",
+      "value": "umbrella-registration-success"
+    },
+    {
+      "key": "umbrella-registration-failure",
+      "value": "umbrella-registration-failure"
+    },
+    {
+      "key": "site-id-mismatch",
+      "value": "site-id-mismatch"
+    },
+    {
+      "key": "service-node-state",
+      "value": "service-node-state"
+    },
+    {
+      "key": "appqoe-alarm",
+      "value": "appqoe-alarm"
+    },
+    {
+      "key": "fw-alert",
+      "value": "fw-alert"
+    },
+    {
+      "key": "ftm-zia-tunnel-setup",
+      "value": "ftm-zia-tunnel-setup"
+    },
+    {
+      "key": "ftm-tunnel-setup",
+      "value": "ftm-tunnel-setup"
+    },
+    {
+      "key": "ftm-zia-location-setup",
+      "value": "ftm-zia-location-setup"
+    },
+    {
+      "key": "ftm-tunnel-tracker",
+      "value": "ftm-tunnel-tracker"
+    },
+    {
+      "key": "dca-change-event",
+      "value": "dca-change-event"
+    },
+    {
+      "key": "geo-fence-alert-status",
+      "value": "geo-fence-alert-status"
+    },
+    {
+      "key": "app-list-app-aliases-notify",
+      "value": "app-list-app-aliases-notify"
+    },
+    {
+      "key": "app-list-unsupported-app-notify",
+      "value": "app-list-unsupported-app-notify"
+    },
+    {
+      "key": "tracker-state-change",
+      "value": "tracker-state-change"
+    },
+    {
+      "key": "disk-read-speed",
+      "value": "disk-read-speed"
+    },
+    {
+      "key": "disk-write-speed",
+      "value": "disk-write-speed"
+    },
+    {
+      "key": "idmgr-pxgrid-connection",
+      "value": "idmgr-pxgrid-connection"
+    },
+    {
+      "key": "qos-congestion",
+      "value": "qos-congestion"
+    },
+    {
+      "key": "tunnel-ipsec-anti-replay-drop",
+      "value": "tunnel-ipsec-anti-replay-drop"
+    },
+    {
+      "key": "nat-update",
+      "value": "nat-update"
+    },
+    {
+      "key": "aaa-password-expiry-warning",
+      "value": "aaa-password-expiry-warning"
+    },
+    {
+      "key": "aaa-password-expired",
+      "value": "aaa-password-expired"
+    },
+    {
+      "key": "data-policy-commit-failure",
+      "value": "data-policy-commit-failure"
+    },
+    {
+      "key": "non-yang-cli-file-generated",
+      "value": "non-yang-cli-file-generated"
+    },
+    {
+      "key": "cellular-network-status-change",
+      "value": "cellular-network-status-change"
+    },
+    {
+      "key": "vmanage-sdavc-state",
+      "value": "vmanage-sdavc-state"
+    },
+    {
+      "key": "vmanage-sdavc-pwsync",
+      "value": "vmanage-sdavc-pwsync"
+    },
+    {
+      "key": "line-state-event",
+      "value": "line-state-event"
+    },
+    {
+      "key": "high-neo4j-direct-memory-usage",
+      "value": "high-neo4j-direct-memory-usage"
+    },
+    {
+      "key": "qfp-exmem-usage",
+      "value": "qfp-exmem-usage"
+    },
+    {
+      "key": "red-event",
+      "value": "red-event"
+    },
+    {
+      "key": "nhrp-alarm",
+      "value": "nhrp-alarm"
+    },
+    {
+      "key": "nhrp-event",
+      "value": "nhrp-event"
+    },
+    {
+      "key": "ike-ipsec-event",
+      "value": "ike-ipsec-event"
+    },
+    {
+      "key": "policy-enforcement-status",
+      "value": "policy-enforcement-status"
+    },
+    {
+      "key": "root-ca-certificate-expiration-status",
+      "value": "root-ca-certificate-expiration-status"
+    },
+    {
+      "key": "cpu-barrier",
+      "value": "cpu-barrier"
+    },
+    {
+      "key": "disk-barrier",
+      "value": "disk-barrier"
+    },
+    {
+      "key": "memory-barrier",
+      "value": "memory-barrier"
+    },
+    {
+      "key": "omp-ribout-usage",
+      "value": "omp-ribout-usage"
+    },
+    {
+      "key": "license-out-of-compliance",
+      "value": "license-out-of-compliance"
+    },
+    {
+      "key": "license-not-synced",
+      "value": "license-not-synced"
+    },
+    {
+      "key": "device-clock-sync",
+      "value": "device-clock-sync"
+    },
+    {
+      "key": "analytics-purge-completed",
+      "value": "analytics-purge-completed"
+    }
+  ]
+}

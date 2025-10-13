@@ -1,0 +1,58 @@
+sdwan:
+  feature_profiles:
+    system_profiles:
+      - name: TF_SDWAN_SYSTEM
+        description: Terraform - System Profile
+        global:
+          cdp: true
+          domain_lookup: true
+        basic:
+          timezone: UTC
+          latitude_variable: system_latitude
+          longitude_variable: system_longitude
+          console_baud_rate: 9600
+          idle_timeout: 300
+          location_variable: system_location
+        aaa:
+          users:
+            - name: admin
+              password: admin
+              privilege: 15
+            - name: dradmin
+              password: dradmin
+              privilege: 15
+        banner:
+          login: "Authorized access only. Unauthorized access is prohibited."
+          motd: "Welcome to SD-WAN System"
+        logging:
+          ipv4_servers:
+            - hostname_ip: 192.168.0.25
+              severity: warn
+              vpn_id: 0
+        ntp:
+          servers:
+            - hostname_ip: 172.16.0.11
+              prefer: true
+              vpn_id: 0
+        bfd:
+          poll_interval: 30000
+          multiplier: 5
+          colors:
+            - color: biz-internet
+              path_mtu_discovery: true
+            - color: mpls
+              path_mtu_discovery: true
+        omp:
+          send_path_limit: 16
+          ecmp_limit: 16
+          graceful_restart: true
+          graceful_restart_timer: 86400
+          advertise_ipv4_bgp: true
+          advertise_ipv4_connected: true
+          advertise_ipv4_static: true
+          advertise_ipv4_ospf: true
+        security:
+          rekey_time: 172800
+          integrity_types:
+            - esp
+            - ip-udp-esp

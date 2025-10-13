@@ -1,0 +1,44 @@
+sdwan:
+  sites:
+    - id: 501
+      routers:
+        - chassis_id: C8K-3D1A8960-6E76-532C-DA93-50626FC5797E
+          configuration_group: TF_SDWAN_EDGE
+          configuration_group_deploy: true
+          device_variables:
+            system_ip: 10.0.0.1
+            host_name: edge1-stuttgart
+            site_id: 501
+            pseudo_commit_timer: 300
+            system_latitude: 48.7760
+            system_longitude: 9.1816
+            system_location: Stuttgart
+            vpn0_default_gw1: 172.1.1.254
+            vpn0_default_gw2: 172.16.2.254
+            vpn0_inet_name: GigabitEthernet1
+            vpn0_inet_shutdown: false
+            vpn0_inet_ipv4_address: 172.16.1.1
+            vpn0_mpls_name: GigabitEthernet2
+            vpn0_mpls_shutdown: false
+            vpn0_mpls_ipv4_address: 172.16.2.1
+    - id: 502
+      routers:
+        - chassis_id: C8K-D4CE7174-5261-7E6F-91EA-4926BCF4C2DD
+          configuration_group: TF_SDWAN_EDGE
+          configuration_group_deploy: true
+          device_variables:
+            system_ip: 10.0.0.2
+            host_name: edge2-munich
+            site_id: 502
+            pseudo_commit_timer: 300
+            system_latitude: 48.1349
+            system_longitude: 11.5799
+            system_location: Munich
+            vpn0_default_gw1: 172.1.1.254
+            vpn0_default_gw2: 172.16.2.254
+            vpn0_inet_name: GigabitEthernet1
+            vpn0_inet_shutdown: false
+            vpn0_inet_ipv4_address: 172.16.1.2
+            vpn0_mpls_name: GigabitEthernet2
+            vpn0_mpls_shutdown: false
+            vpn0_mpls_ipv4_address: 172.16.2.2
