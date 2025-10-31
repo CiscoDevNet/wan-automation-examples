@@ -1,0 +1,10 @@
+name: meraki_network
+productTypes:
+  - appliance
+  - switch
+  - wireless
+tags: []
+timeZone: America/Los_Angeles
+# Uncomment and add valid network ID to copy from an existing network.
+# copyFromNetworkId:
+notes: null
