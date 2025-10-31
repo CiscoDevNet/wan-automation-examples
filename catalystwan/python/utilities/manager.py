@@ -99,9 +99,7 @@ class Manager:
             return self.jsessionid
 
         except requests.exceptions.RequestException as e:
-            logger.error(
-                f"Login failed: {e}. Response: {response.text if response is not None else 'No response'}\n"
-            )
+            logger.error(f"Login failed: {e}. Response: {response.text if response is not None else 'No response'}\n")
             return None  # Indicate failure
         except ValueError as e:
             logger.error(f"Login failed: {e}\n")
@@ -209,9 +207,7 @@ class Manager:
             requests.exceptions.RequestException: If the API call fails or manager is not authenticated.
         """
         if not self.status:
-            raise requests.exceptions.RequestException(
-                "Manager not authenticated. Cannot make API call."
-            )
+            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
 
         url = cast(str, self.dataservice_base_url) + path
         logger.info(f"Making GET request to: {url} with params: {params}")
@@ -235,9 +231,7 @@ class Manager:
             requests.exceptions.RequestException: If the API call fails or manager is not authenticated.
         """
         if not self.status:
-            raise requests.exceptions.RequestException(
-                "Manager not authenticated. Cannot make API call."
-            )
+            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
 
         url = cast(str, self.dataservice_base_url) + path
         logger.info(f"Making POST request to: {url} with payload: {payload}")
@@ -262,9 +256,7 @@ class Manager:
             requests.exceptions.RequestException: If the API call fails or manager is not authenticated.
         """
         if not self.status:
-            raise requests.exceptions.RequestException(
-                "Manager not authenticated. Cannot make API call."
-            )
+            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
 
         url = cast(str, self.dataservice_base_url) + path
         logger.info(f"Making PUT request to: {url} with payload: {payload}")
@@ -289,9 +281,7 @@ class Manager:
             requests.exceptions.RequestException: If the API call fails or manager is not authenticated.
         """
         if not self.status:
-            raise requests.exceptions.RequestException(
-                "Manager not authenticated. Cannot make API call."
-            )
+            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
 
         url = cast(str, self.dataservice_base_url) + path
         response = self.session.delete(url=url, params=params)
@@ -315,9 +305,7 @@ class Manager:
         """
 
         if not self.status:
-            raise requests.exceptions.RequestException(
-                "Manager not authenticated. Cannot make API call."
-            )
+            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
 
         api = "/logout"
         url = self.base_url + api
@@ -335,31 +323,31 @@ def get_manager_credentials_from_env():
     Exits if any required variable is missing.
     """
 
-    manager_host = os.environ.get("manager_host")
-    manager_port = os.environ.get("manager_port")
-    manager_username = os.environ.get("manager_username")
-    manager_password = os.environ.get("manager_password")
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+    manager_host = os.getenv("manager_host")
+    manager_port = os.getenv("manager_port")
+    manager_username = os.getenv("manager_username")
+    manager_password = os.getenv("manager_password")
 
     # Check for None values first
     if not all([manager_host, manager_port, manager_username, manager_password]):
         print(
-            "Manager details must be set via environment variables using below commands:\n"
-            "For Windows Workstation:\n"
-            "  set manager_host=198.18.1.10\n"
-            "  set manager_port=8443\n"
-            "  set manager_username=admin\n"
-            "  set manager_password=admin\n"
-            "For MAC OSX / Linux Workstation:\n"
-            "  export manager_host=198.18.1.10\n"
-            "  export manager_port=8443\n"
-            "  export manager_username=admin\n"
-            "  export manager_password=admin"
+            "Manager details must be set in a .env file in the project root directory.\n"
+            "Please create a .env file with the following variables:\n\n"
+            "Example .env file content:\n"
+            "  manager_host=198.18.1.10\n"
+            "  manager_port=8443\n"
+            "  manager_username=admin\n"
+            "  manager_password=admin"
         )
         sys.exit(1)
 
     return (
         manager_host,
-        int(manager_port),
+        int(manager_port) if manager_port else 0,
         manager_username,
         manager_password,
     )

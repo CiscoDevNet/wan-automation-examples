@@ -10,16 +10,15 @@
 #
 # =========================================================================
 
-import json
 import logging
-import os
 
 import click
 import requests
 import tabulate
 
-# Import the new unified Manager class and the credentials function
-from manager import Manager, get_manager_credentials_from_env
+# Import Manager class and the credentials function
+from utilities.manager import Manager, get_manager_credentials_from_env
+from utilities.tools import save_payload
 
 
 # -----------------------------------------------------------------------------
@@ -56,28 +55,6 @@ def cli(ctx):
 
 
 # -----------------------------------------------------------------------------
-def save_json(
-    payload: dict, filename: str = "payload", directory: str = "./output/payloads/"
-):
-    """Save json response payload to a file
-
-    Args:
-        payload: JSON response payload
-        filename: filename for saved files (default: "payload")
-    """
-
-    filename = "".join([directory, f"{filename}.json"])
-
-    if not os.path.exists(directory):
-        print(f"Creating folder {directory}")
-        os.makedirs(directory)  # Create the directory if it doesn't exist
-
-    # Dump entire payload to file
-    with open(filename, "w") as file:
-        json.dump(payload, file, indent=4)
-
-
-# -----------------------------------------------------------------------------
 @click.command()
 @click.pass_context  # Pass the context to the command
 def ls(ctx):
@@ -95,8 +72,8 @@ def ls(ctx):
     try:
         payload = manager._api_get(api_path)
         data = payload.get("data", [])
-        save_json(payload, "devices_all", "output/payloads/devices/")
-        save_json(data, "devices_data", "output/payloads/devices/")
+        save_payload(payload, "devices_all", "output/devices/")
+        save_payload(data, "devices_data", "output/devices/")
         app_headers = [
             "UUID",
             "Model",
@@ -114,9 +91,7 @@ def ls(ctx):
                 item.get("deviceModel", "N/A"),
                 item.get("vedgeCertificateState", "N/A"),
                 item.get("host-name", "N/A"),
-                item.get(
-                    "configuredSystemIP", "N/A"
-                ),  # Using .get() with default value
+                item.get("configuredSystemIP", "N/A"),  # Using .get() with default value
                 item.get("siteId", "N/A"),
             ]
             table.append(tr)
@@ -150,8 +125,8 @@ def get_device_by_ip(ctx):
     try:
         payload = manager._api_get(api_path)
         data = payload.get("data", [])
-        save_json(payload, "device_by_ip_all", "output/payloads/devices/")
-        save_json(data, "device_by_ip_data", "output/payloads/devices/")
+        save_payload(payload, "device_by_ip_all", "output/devices/")
+        save_payload(data, "device_by_ip_data", "output/devices/")
 
         for item in data:
             tr = [
@@ -201,8 +176,9 @@ def get_config(ctx):
     # Fetch API endpoint
     try:
         payload = manager._api_get(api_path)
-        data = payload.get("data", [])
-        save_json(payload, "device_config_all", "output/payloads/devices/")
+        data = payload.get("config", [])
+        save_payload(payload, "device_config_header_data", "output/devices/")
+        save_payload(data, "device_config_data", "output/devices/")
         running_config = payload["config"]
         print(running_config)
 

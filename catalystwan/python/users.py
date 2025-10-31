@@ -10,16 +10,15 @@
 #
 # =========================================================================
 
-import json
 import logging
-import os
 
 import click
 import requests
 import tabulate
 
-# Import the new unified Manager class and the credentials function
-from manager import Manager, get_manager_credentials_from_env
+# Import Manager class and the credentials function
+from utilities.manager import Manager, get_manager_credentials_from_env
+from utilities.tools import save_payload
 
 
 # -----------------------------------------------------------------------------
@@ -56,28 +55,6 @@ def cli(ctx):
 
 
 # -----------------------------------------------------------------------------
-def save_json(
-    payload: dict, filename: str = "payload", directory: str = "./output/payloads/"
-):
-    """Save json response payload to a file
-
-    Args:
-        payload: JSON response payload
-        filename: filename for saved files (default: "payload")
-    """
-
-    filename = "".join([directory, f"{filename}.json"])
-
-    if not os.path.exists(directory):
-        print(f"Creating folder {directory}")
-        os.makedirs(directory)  # Create the directory if it doesn't exist
-
-    # Dump entire payload to file
-    with open(filename, "w") as file:
-        json.dump(payload, file, indent=4)
-
-
-# -----------------------------------------------------------------------------
 @click.command()
 @click.pass_context  # Pass the context to the command
 def ls(ctx):
@@ -93,8 +70,8 @@ def ls(ctx):
     try:
         payload = manager._api_get(api_path)
         data = payload.get("data", [])
-        save_json(payload, "users_headers_and_data", "output/payloads/users/")
-        save_json(data, "users_data", "output/payloads/users/")
+        save_payload(payload, "users_headers_and_data", "output/users/")
+        save_payload(data, "users_data", "output/users/")
 
         headers = ["Username", "Group"]
         table = []
@@ -131,9 +108,7 @@ def add(ctx):
     print("\n~~~ Adding user")
 
     username_input = click.prompt("Enter username to add", type=str)
-    password = click.prompt(
-        "Enter password for the new user", type=str, hide_input=True
-    )
+    password = click.prompt("Enter password for the new user", type=str, hide_input=True)
     group_input = click.prompt(
         "Enter user group(s) (comma-separated, e.g., netadmin,admin)",
         type=str,
@@ -153,11 +128,9 @@ def add(ctx):
     try:
         response = manager._api_post(api_path, payload=user_payload)
 
-        save_json(response, "users_add", "output/payloads/users/")
+        save_payload(response, "users_add", "output/users/")
 
-        confirmed_username = (
-            response.get("userName") if isinstance(response, dict) else None
-        )
+        confirmed_username = response.get("userName") if isinstance(response, dict) else None
 
         if confirmed_username:
             click.echo(f"User '{confirmed_username}' successfully created.")
@@ -187,7 +160,7 @@ def delete(ctx):
 
     try:
         response = manager._api_delete(api_path)
-        save_json(response, "users_del", "output/payloads/users/")
+        save_payload(response, "users_del", "output/users/")
         click.echo(f"User '{username}' successfully deleted.")
         # The _api_delete method returns a dict with a 'message' key if no JSON content
         if "message" in response:

@@ -11,15 +11,14 @@
 # =========================================================================
 
 
-import json
 import logging
-import os
 
 import click
 import requests
 
-# Import the new unified Manager class and the credentials function
-from manager import Manager, get_manager_credentials_from_env
+# Import Manager class and the credentials function
+from utilities.manager import Manager, get_manager_credentials_from_env
+from utilities.tools import save_payload
 
 
 # -----------------------------------------------------------------------------
@@ -56,28 +55,6 @@ def cli(ctx):
 
 
 # -----------------------------------------------------------------------------
-def save_json(
-    payload: dict, filename: str = "payload", directory: str = "./output/payloads/"
-):
-    """Save json response payload to a file
-
-    Args:
-        payload: JSON response payload
-        filename: filename for saved files (default: "payload")
-    """
-
-    filename = "".join([directory, f"{filename}.json"])
-
-    if not os.path.exists(directory):
-        print(f"Creating folder {directory}")
-        os.makedirs(directory)  # Create the directory if it doesn't exist
-
-    # Dump entire payload to file
-    with open(filename, "w") as file:
-        json.dump(payload, file, indent=4)
-
-
-# -----------------------------------------------------------------------------
 @click.command()
 @click.pass_context  # Pass the context to the command
 def get_org(ctx):
@@ -94,8 +71,8 @@ def get_org(ctx):
     try:
         payload = manager._api_get(api_path)
         data = payload.get("data", [])
-        save_json(payload, "org_header_data", "output/payloads/settings/")
-        save_json(data, "org_data", "output/payloads/settings/")
+        save_payload(payload, "org_header_data", "output/settings/")
+        save_payload(data, "org_data", "output/settings/")
         for item in data:
             org = item["org"]
         click.echo(f"Organization: {org}")
@@ -125,8 +102,8 @@ def get_validator(ctx):
         vbond = ""
         payload = manager._api_get(api_path)
         data = payload.get("data", [])
-        save_json(payload, "validator_header_all", "output/payloads/settings/")
-        save_json(data, "validator_data", "output/payloads/settings/")
+        save_payload(payload, "validator_header_all", "output/settings/")
+        save_payload(data, "validator_data", "output/settings/")
         for item in data:
             vbond = item["domainIp"]
         click.echo(f"validator: {vbond}")
