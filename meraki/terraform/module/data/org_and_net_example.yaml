@@ -1,0 +1,15 @@
+meraki:
+  domains:
+    - name: North America
+      organizations:
+        - name: Meraki_Organization
+          managed: true
+          networks:
+          - name: Meraki_Network
+            product_types:
+              - appliance
+              - switch
+              - wireless
+            time_zone: America/Los_Angeles
+            notes: null
+            tags: []

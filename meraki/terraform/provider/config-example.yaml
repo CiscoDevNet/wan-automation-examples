@@ -1,0 +1,12 @@
+# Update with your own parameters
+
+organization:
+  name: org_name
+  management_details: []
+  network:
+    name: network_name
+    organization_id: meraki_organization.Meraki_Organization.id
+    notes: 
+    product_types: ["appliance", "switch", "wireless"]
+    tags: []
+    time_zone: America/Los_Angeles
