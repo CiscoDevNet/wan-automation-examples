@@ -87,7 +87,7 @@ For more information and examples, visit: <https://netascode.cisco.com/docs/star
 
 Go to `provider` folder.
 
-Copy `config-example.yaml` to `config.yaml` and fill in parameters.
+Rename `config-example.yaml` to `config.yaml` and fill in parameters.
 
 Initialize Terraform (this will download provider and module):
 
