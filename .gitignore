@@ -32,5 +32,7 @@ payloads
 **/init.sh
 **/output
 **/sdwan_api.log
+**/meraki_api.log
 **/config.yaml
 catalystwan/terraform/module/defaults.yaml
+meraki/terraform/module/defaults.yaml

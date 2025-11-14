@@ -1,4 +1,4 @@
-# Update with your own parameters
+# Copy this file to config.yaml and update with your own parameters.
 
 organization:
   name: org_name

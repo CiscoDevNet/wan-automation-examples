@@ -1,3 +1,5 @@
+# Copy this file to config.yaml and update with your own parameters.
+
 meraki:
   domains:
     - name: North America
