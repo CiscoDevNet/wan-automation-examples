@@ -57,7 +57,7 @@ This option is excellent for users who prefer a more declarative, "intent-based"
 
 Go to `module` folder.
 
-Copy `config-example.yaml` to `config.yaml` and fill in parameters.
+Rename `config-example.yaml` to `config.yaml` and fill in parameters.
 
 Initialize Terraform (this will download provider and module):
 

@@ -1,7 +1,7 @@
 # PARAMETERS
 
 variable "config_file" {
-  default = "./config.yaml"
+  default = "data/config.yaml"
 }
 
 locals {

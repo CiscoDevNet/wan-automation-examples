@@ -1,13 +1,12 @@
-# Copy this file to config.yaml and update with your own parameters.
-
+# Rename to "config.yaml" and update with your own parameters.
 meraki:
   domains:
     - name: North America
       organizations:
-        - name: Meraki_Organization
+        - name: org_name
           managed: true
           networks:
-          - name: Meraki_Network
+          - name: network_name
             product_types:
               - appliance
               - switch
