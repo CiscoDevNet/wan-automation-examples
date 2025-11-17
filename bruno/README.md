@@ -90,7 +90,7 @@ These secrets will be accessible in your Bruno collection via the process.env ob
 
 ![env](../bruno/assets/dot-env-vars.webp)
 
-### Integration with Secret managers PremiumBruno Logo
+### Integration with Secret managers Premium
 
 For users of Bruno Ultimate, you can take your secret management one step further and perform an integration with a secret vault.
 
@@ -99,3 +99,62 @@ Currently, we support integrations with:
 - [HashiCorp vault](https://docs.usebruno.com/secrets-management/secret-managers/secret-managers/hashicorp-vault)
 - [AWS Secrets Manager](https://docs.usebruno.com/secrets-management/secret-managers/secret-managers/aws-secrets-manager)
 - [Azure Key Vault](https://docs.usebruno.com/secrets-management/secret-managers/secret-managers/azure-key-vault)
+
+### Using Bruno API Client to test JWT-based authentication
+
+If you use [Bruno](https://www.usebruno.com/) API client: to assign the `token` and `csrf` values from the JSON response to a variable in Bruno, you'll typically use a "Tests" script or a similar post-response script feature available in Bruno. This allows you to parse the response body and extract specific values.
+
+```javascript
+// The 'res' variable is automatically available in post-request scripts
+// and contains the response object.
+
+// Always check if the 'res' object and its 'body' property exist
+// before trying to access them.
+if (res && res.body) {
+    // The 'res.body' is automatically parsed as JSON
+    // if the Content-Type of the response is 'application/json'.
+    // So, you can directly access its properties.
+    const responseJson = res.body;
+
+    // Extract the csrf token
+    const csrfToken = responseJson.csrf;
+
+    // Extract the main JWT token
+    const jwtToken = responseJson.token;
+
+    // Set environment variables for both tokens
+    bru.setVar("csrf_token", csrfToken);
+    bru.setVar("jwt_token", jwtToken);
+
+    // Optional: Log the values to the console for debugging
+    console.log("Extracted CSRF Token:", csrfToken);
+    console.log("Extracted JWT Token:", jwtToken);
+} else {
+    // Log an error if the response or its body is not as expected
+    console.error("Error: Response or response body is undefined or empty.");
+    // You might also want to assert a failure if this is critical for your test
+    // bru.assert(false, "Failed to get response body or it was empty.");
+}
+```
+
+Define a new request with:
+
+The API endpoint to authenticate: `https://{{vmanage}}:{{port}}/jwt/login`
+
+Define content-type as `application/json` in the "Headers" tab content:
+
+![headers](assets/Bruno-auth-tab-headers.png)
+
+The "Body" tab content has a json payload with username, password and optional duration.
+
+![body](assets/Bruno-auth-tab-body.png)
+
+The "Tests" tab content has the script to save JWT token and and XSRF token in variables (jwt_token and csrf_token) :
+
+![tests](assets/Bruno-auth-tab-tests.png)
+
+Then use the JWT token (jwt_token variable) along with the XSRF token (csrf_token variable) for further API requests. The following figure shows an API call with Bruno.
+
+Headers tab content - Re-use jwt_token and csrf_token saved in the authentication:
+
+![headers](assets/Bruno-call-tab-headers.png)
