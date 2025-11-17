@@ -23,11 +23,13 @@ wan-automation-examples/
 ├── bruno/
 ├── docs/
 ├── catalystwan/
+    ├── docs/
     ├── python/
-    ├── terraform/    
+    ├── terraform/
 ├── meraki/
+    ├── docs/
     ├── python/
-    ├── terraform/    
+    ├── terraform/
 ├── README.md
 ```
 
@@ -35,22 +37,17 @@ bruno:
 
 - Similar to postman collections
 - A few examples of APIs
-- Check [README](bruno/README.md)
+- Visit [README](bruno/README.md)
 
 catalystwan:
 
-- python example. Check [README](catalystwan/python/README.md)
-- terraform examples, check [README](catalystwan/terraform/README.md)
+- python examples. Visit [README](catalystwan/python/README.md)
+- terraform examples. Visit [README](catalystwan/terraform/README.md)
 
 meraki:
 
-- python and terraform examples - TBD
-
-docs:
-
-- [Getting Started](docs/01-Getting-Started.md)
-- [Authentication](docs/02-Authentication.md)
-- And a few more docs
+- python examples
+- terraform examples
 
 ## Setup Python Environment
 
@@ -66,7 +63,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-Initialize and install dependancies:
+Initialize and install dependencies:
 
 ```shell
 uv sync
@@ -80,6 +77,6 @@ The `CONTRIBUTING.md` file instructs new contributors on how to communicate with
 
 The `LICENSE` file should contain the license you intend for the source code in the repo.
 
-The `SECURITY.md` file describes security policies and procedures including reporting a security-related bug and the policy on disclosure. 
+The `SECURITY.md` file describes security policies and procedures including reporting a security-related bug and the policy on disclosure.
 
 The `AGENTS.md` file contains a template for guiding AI agents that work with your repository.
