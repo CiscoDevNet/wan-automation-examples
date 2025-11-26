@@ -14,8 +14,11 @@ APIs for UX 2.0:
 - Mobility and NFVirtual Feature Profiles: [here](https://developer.cisco.com/docs/sdwan/20-18/feature-profiles-mobility-and-nfv-overview/)
 - Others Feature Profiles: [here](https://developer.cisco.com/docs/sdwan/20-18/feature-profiles-others-overview/)
 
-Configuration Groups:
-    |--> List of Feature Profiles
-    |        |--> System
-    |        |--> Transport
-    |        |--> Service
+```example
+├── Configuration Groups
+    ├── List of Feature Profiles
+         ├── System/
+         ├── Transport
+         ├── Service
+         ├── ...
+```
