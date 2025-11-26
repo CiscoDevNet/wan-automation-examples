@@ -1,5 +1,15 @@
 # Getting Started
 
+Representational State Transfer (REST) is an architectural style for designing web service applications. It uses a stateless, client–server, cacheable communications protocol, typically HTTP or its secure version, HTTPS.
+
+The SD-WAN Manager web server communicates using HTTPS protocol. Its REST API documentation is built-in and accessible at:
+https://<manager-ip>:<port>/apidocs
+
+You can test API calls interactively using the Swagger UI available at the /apidocs endpoint.
+
+This document provides an overview of the Cisco Catalyst SD-WAN Manager RESTful API, including how to authenticate and make API requests.
+
+
 ## API Reference
 
 The following categories organize the Cisco Catalyst SD-WAN Manager API:

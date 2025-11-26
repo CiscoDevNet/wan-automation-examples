@@ -2,16 +2,6 @@
 
 [Cisco IOS XE Catalyst SD-WAN Alarms Guide](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/alarms-reference-guide/cisco-ios-xe-catalyst-sd-wan-alarms-guide/sd-wan-alarms-guide.html)
 
-## Notes
-
-With our current (Viptela) API monitoring solution, we are currently using both **rulename** and **component** fields to specifically group and correlate events for our ITOM platform to reduce ticket noise, my concern is that since there are a number of new alarms then there could also be new variables to consider.
-
-We have been able to find the component variables list using /event/component/keyvalue API, but having trouble finding an equivalent variables list for "rulename".
-
-Would you have a list of all the variables that can be returned in the "rulename" field? (highlighted in the sample JSON response below).
-
-The closest I've been able to find is using the /event/types/keyvalue endpoint, are they the same values? if so we can use those.
-
 ## TL/DR
 
 - Get alarms: `GET https://{{vmanage}}:{{port}}/dataservice/alarms`
@@ -77,7 +67,7 @@ Bulk API to collect alarms:
 
 Find the component variables (Policy, NAT, BFD, APP-Route, System, Control...)
 
-The following endoint returns components:
+The following endpoint returns components:
 
 `GET https://<>/dataservice/event/component/keyvalue`
 
@@ -104,4 +94,3 @@ Get all possible values for alarms, and the corresponding severity mapping:
 `GET https://{{vmanage}}:{{port}}/dataservice/alarms/severitymappings`
 
 Check [Example of response (20.18)](./alarms/severity-mapping.json)
-
