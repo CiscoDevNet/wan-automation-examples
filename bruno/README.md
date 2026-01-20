@@ -2,6 +2,21 @@
 
 This collection provides several examples of working with the Cisco Catalyst SD-WAN and Meraki Dashboard APIs.
 
+## Bruno
+
+Bruno is an open-source, lightweight API client designed as a fast and privacy-focused alternative to tools like Postman and Insomnia. It has gained significant popularity among developers who prefer a "local-first" workflow and want to avoid the cloud-heavy features and forced logins of traditional API platforms.
+
+Key Features of Bruno
+
+- Offline-First & Local Storage: Unlike Postman, which syncs your data to its cloud by default, Bruno stores your API collections directly on your local filesystem. There is no mandatory cloud sync and no requirement to create an account or log in.
+- Git-Friendly (The .bru Format): Bruno saves requests in a plain-text markup language called .bru. Because these are simple text files, you can commit your API collections directly into your Git repository alongside your source code. This makes branching, merging, and code reviews for APIs seamless.
+- Lightweight and Fast: Bruno is built to be a focused tool rather than an all-in-one "platform." This results in much faster startup times and lower memory usage compared to Postman.
+- Scripting and Testing: It supports JavaScript for pre-request scripts and post-response tests, similar to Postman, allowing for complex automation and data manipulation.
+- Multi-Protocol Support: It handles REST, GraphQL, and gRPC APIs.
+- Open Source: Released under the MIT License, it allows for community contributions and transparency.
+
+You can download it for Windows, Mac, or Linux from the [official website](https://www.usebruno.com/).
+
 ## Collections
 
 This repository has 3 collections:
