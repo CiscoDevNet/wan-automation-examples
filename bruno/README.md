@@ -25,7 +25,7 @@ This repository has 3 collections:
 - Meraki: Features examples for the Meraki Dashboard API.
 - Misc: Additional examples and resources.
 
-Start Bruno.app then open collections from the "Collections" folder.
+Start Bruno then open collections from the "Collections" folder.
 
 - SD-WAN collection: click "Open Collection", find and select "Cisco-SD-WAN" folder
 - Meraki collection: click "Open Collection, find and select "Meraki" folder
