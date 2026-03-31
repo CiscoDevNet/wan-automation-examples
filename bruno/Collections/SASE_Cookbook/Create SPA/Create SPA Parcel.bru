@@ -1,0 +1,200 @@
+meta {
+  name: Create SPA Parcel
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://{{apigwurl}}/dataservice/v1/feature-profile/sdwan/sse-spa/{{spa_Profile_Id}}/spa-configuration
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+body:json {
+  {
+      "name": "LG_Dummy",
+      "description": "",
+      "data": {
+          "sseProvider": {
+              "optionType": "global",
+              "value": "Cisco-SSE"
+          },
+          "vpn": {
+              "optionType": "global",
+              "value": "CorporateLAN"
+          },
+          "interface": [
+              {
+                  "ifName": {
+                      "optionType": "global",
+                      "value": "ipsec101"
+                  },
+                  "shutdown": {
+                      "optionType": "default",
+                      "value": false
+                  },
+                  "description": {
+                      "optionType": "default"
+                  },
+                  "tunnelSourceInterface": {
+                      "optionType": "default",
+                      "value": "Auto"
+                  },
+                  "tunnelRouteVia": {
+                      "optionType": "default",
+                      "value": "Auto"
+                  },
+                  "tunnelDcPreference": {
+                      "optionType": "global",
+                      "value": "primary-dc"
+                  },
+                  "tcpMssAdjust": {
+                      "optionType": "default"
+                  },
+                  "mtu": {
+                      "optionType": "global",
+                      "value": 1400
+                  },
+                  "dpdInterval": {
+                      "optionType": "default",
+                      "value": 10
+                  },
+                  "dpdRetries": {
+                      "optionType": "default",
+                      "value": 3
+                  },
+                  "ikeRekeyInterval": {
+                      "optionType": "default",
+                      "value": 14400
+                  },
+                  "ikeCiphersuite": {
+                      "optionType": "default",
+                      "value": "aes256-cbc-sha1"
+                  },
+                  "ikeGroup": {
+                      "optionType": "default",
+                      "value": "16"
+                  },
+                  "ipsecRekeyInterval": {
+                      "optionType": "default",
+                      "value": 3600
+                  },
+                  "ipsecReplayWindow": {
+                      "optionType": "default",
+                      "value": 512
+                  },
+                  "ipsecCiphersuite": {
+                      "optionType": "default",
+                      "value": "aes256-gcm"
+                  },
+                  "perfectForwardSecrecy": {
+                      "optionType": "default",
+                      "value": "none"
+                  }
+              },
+              {
+                  "ifName": {
+                      "optionType": "global",
+                      "value": "ipsec102"
+                  },
+                  "shutdown": {
+                      "optionType": "default",
+                      "value": false
+                  },
+                  "description": {
+                      "optionType": "default"
+                  },
+                  "tunnelSourceInterface": {
+                      "optionType": "default",
+                      "value": "Auto"
+                  },
+                  "tunnelRouteVia": {
+                      "optionType": "default",
+                      "value": "Auto"
+                  },
+                  "tunnelDcPreference": {
+                      "optionType": "global",
+                      "value": "secondary-dc"
+                  },
+                  "tcpMssAdjust": {
+                      "optionType": "default"
+                  },
+                  "mtu": {
+                      "optionType": "global",
+                      "value": 1400
+                  },
+                  "dpdInterval": {
+                      "optionType": "default",
+                      "value": 10
+                  },
+                  "dpdRetries": {
+                      "optionType": "default",
+                      "value": 3
+                  },
+                  "ikeRekeyInterval": {
+                      "optionType": "default",
+                      "value": 14400
+                  },
+                  "ikeCiphersuite": {
+                      "optionType": "default",
+                      "value": "aes256-cbc-sha1"
+                  },
+                  "ikeGroup": {
+                      "optionType": "default",
+                      "value": "16"
+                  },
+                  "ipsecRekeyInterval": {
+                      "optionType": "default",
+                      "value": 3600
+                  },
+                  "ipsecReplayWindow": {
+                      "optionType": "default",
+                      "value": 512
+                  },
+                  "ipsecCiphersuite": {
+                      "optionType": "default",
+                      "value": "aes256-gcm"
+                  },
+                  "perfectForwardSecrecy": {
+                      "optionType": "default",
+                      "value": "none"
+                  }
+              }
+          ],
+          "region": {
+              "optionType": "global",
+              "value": "us-east-1"
+          },
+          "bgpAsNumber": {
+              "optionType": "global",
+              "value": 65412
+          },
+          "inRoutePolicy": {
+              "optionType": "global",
+              "value": "SPA_IN"
+          },
+          "outRoutePolicy": {
+              "optionType": "global",
+              "value": "SPA_OUT"
+          }
+      }
+  }
+}
+
+vars:pre-request {
+  xsrf-token: E3A67A8BAABDD5900CB2C4A4E8F01EE334DF29B0D2A9CC54BF0FF2C5B13D46B460946229A84050AC78350F4CB8C0992F6F68
+  sseProfileId: 5a2066f6-e964-46f6-89b8-1943a29770cc
+  spa_ProfileId: 5a2066f6-e964-46f6-89b8-1943a29770cc
+  spa_Profile_Id: 92797c31-0589-4d9e-9726-71566a694fcc
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

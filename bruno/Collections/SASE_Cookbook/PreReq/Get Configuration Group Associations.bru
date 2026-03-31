@@ -1,0 +1,26 @@
+meta {
+  name: Get Configuration Group Associations
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://{{apigwurl}}/dataservice/v1/config-group/{{configGroupId}}/device/associate
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+vars:pre-request {
+  configGroupId: d9e1dc83-4770-4b61-9da0-d5e02b8be615
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

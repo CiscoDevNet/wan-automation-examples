@@ -1,0 +1,101 @@
+meta {
+  name: Service Route into CG_Service LAN/VPN Specifc VPN
+  type: http
+  seq: 3
+}
+
+put {
+  url: https://{{apigwurl}}/dataservice/v1/feature-profile/sdwan/service/{{serviceId}}/lan/vpn/{{vpn_id}}
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+body:json {
+  {
+      "data": {
+        "enableSdra": {
+          "optionType": "default",
+          "value": false
+        },
+        "greRoute": [],
+        "ipsecRoute": [],
+        "ipv4Route": [],
+        "ipv6Route": [],
+        "mplsVpnIpv4RouteTarget": {
+          "exportRtList": [],
+          "importRtList": []
+        },
+        "mplsVpnIpv6RouteTarget": {
+          "exportRtList": [],
+          "importRtList": []
+        },
+        "name": {
+          "optionType": "default"
+        },
+        "nat64V4Pool": [],
+        "natPortForward": [],
+        "newHostMapping": [],
+        "ompAdminDistance": {
+          "optionType": "default"
+        },
+        "ompAdminDistanceIpv6": {
+          "optionType": "default"
+        },
+        "ompAdvertiseIp4": [],
+        "ompAdvertiseIpv6": [],
+        "routeLeakBetweenServices": [],
+        "routeLeakFromGlobal": [],
+        "routeLeakFromService": [],
+        "service": [],
+        "serviceRoute": [
+          {
+            "prefix": {
+              "ipAddress": {
+                "optionType": "global",
+                "value": "0.0.0.0"
+              },
+              "subnetMask": {
+                "optionType": "global",
+                "value": "0.0.0.0"
+              }
+            },
+            "service": {
+              "optionType": "global",
+              "value": "SSE"
+            },
+            "sseInstance": {
+              "optionType": "global",
+              "value": "Cisco-Secure-Access"
+            },
+            "vpn": {
+              "optionType": "global",
+              "value": 0
+            }
+          }
+        ],
+        "vpnId": {
+          "optionType": "global",
+          "value": 10
+        }
+      },
+      "description": "",
+      "name": "CorporateLAN"
+    }
+}
+
+vars:pre-request {
+  xsrf-token: E3A67A8BAABDD5900CB2C4A4E8F01EE334DF29B0D2A9CC54BF0FF2C5B13D46B460946229A84050AC78350F4CB8C0992F6F68
+  serviceId: 531ba289-d220-44e7-8a21-8642f0d711a1
+  vpn_id: 129f5627-acde-4799-afe8-5191302b9b6b
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

@@ -1,0 +1,28 @@
+meta {
+  name: Delete SPA Parcel
+  type: http
+  seq: 5
+}
+
+delete {
+  url: https://{{apigwurl}}/dataservice/v1/feature-profile/sdwan/sse-spa/{{spa_Profile_Id}}
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+vars:pre-request {
+  xsrf-token: E3A67A8BAABDD5900CB2C4A4E8F01EE334DF29B0D2A9CC54BF0FF2C5B13D46B460946229A84050AC78350F4CB8C0992F6F68
+  sseProfileId: 939e50b4-9a65-4231-b613-649727e8859c
+  spa_Profile_Id: 927a92d6-0d14-4ea9-bee3-7d22af6c1527
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

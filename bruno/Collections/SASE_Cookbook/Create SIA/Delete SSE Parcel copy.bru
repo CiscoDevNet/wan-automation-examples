@@ -1,0 +1,27 @@
+meta {
+  name: Delete SSE Parcel copy
+  type: http
+  seq: 5
+}
+
+delete {
+  url: https://{{apigwurl}}/dataservice/v1/feature-profile/sdwan/sse/{{sseProfileId}}
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+vars:pre-request {
+  xsrf-token: E3A67A8BAABDD5900CB2C4A4E8F01EE334DF29B0D2A9CC54BF0FF2C5B13D46B460946229A84050AC78350F4CB8C0992F6F68
+  sseProfileId: fc59e096-e22f-4778-87ef-6d440bd6139d
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

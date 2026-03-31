@@ -1,0 +1,49 @@
+meta {
+  name: Associate Policy Parcel to Policy group
+  type: http
+  seq: 4
+}
+
+put {
+  url: https://{{apigwurl}}/dataservice/v1/policy-group/{{policygroup_id}}
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+body:json {
+  {
+      "name": "PG_Darkhill",
+      "description": "",
+      "solution": "sdwan",
+      "profiles": [
+          {
+              "id": "5455895f-2566-417d-a0f1-aacee75e9cfd"
+          },
+          {
+              "id": "458366e3-fd23-40c3-8bd3-26d31d8fd652"
+          },
+            {
+              "id": "21d247ed-3e08-491c-ba15-00ae207e7b68"
+          },
+         {
+              "id": "e639f561-bf15-48a8-9b70-9ef8161c9ca5"
+          }
+        
+      ]
+  }
+}
+
+vars:pre-request {
+  policygroup_id: 5aa455de-cd06-4c94-82c7-bae58b608335
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

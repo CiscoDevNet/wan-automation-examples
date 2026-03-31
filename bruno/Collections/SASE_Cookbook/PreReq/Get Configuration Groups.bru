@@ -1,0 +1,22 @@
+meta {
+  name: Get Configuration Groups
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://{{apigwurl}}/dataservice/v1/config-group
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}
