@@ -19,9 +19,10 @@ You can download it for Windows, Mac, or Linux from the [official website](https
 
 ## Collections
 
-This repository has 3 collections:
+This repository has 4 collections:
 
 - Cisco-SD-WAN: Includes examples for Cisco Catalyst SD-WAN Manager.
+- SASE_Cookbook: Includes examples for SD-WAN and SASE
 - Meraki: Features examples for the Meraki Dashboard API.
 - Misc: Additional examples and resources.
 
