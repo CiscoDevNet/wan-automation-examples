@@ -1,0 +1,22 @@
+meta {
+  name: Get SSE Regions
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{apigwurl}}/dataservice/ciscosse/regions
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

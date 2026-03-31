@@ -1,0 +1,33 @@
+meta {
+  name: Create SIA Profile
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://{{apigwurl}}/dataservice/v1/feature-profile/sdwan/sse
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+body:json {
+  {
+      "name": "API-SSE-SIA-2T",
+      "description": "This is created by the API"
+  }
+}
+
+vars:pre-request {
+  xsrf-token: E3A67A8BAABDD5900CB2C4A4E8F01EE334DF29B0D2A9CC54BF0FF2C5B13D46B460946229A84050AC78350F4CB8C0992F6F68
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

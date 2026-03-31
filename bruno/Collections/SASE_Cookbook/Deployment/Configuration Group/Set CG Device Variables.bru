@@ -1,0 +1,83 @@
+meta {
+  name: Set CG Device Variables
+  type: http
+  seq: 2
+}
+
+put {
+  url: https://{{apigwurl}}/dataservice/v1/config-group/{{configGroupId}}/device/variables
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+body:json {
+  {
+      "solution": "sdwan",
+      "devices": [
+          {
+              "device-id": "C1111-8PWE-FCZ2504R2BA",
+              "variables": [
+                  {
+                      "name": "system_ip",
+                      "value": "10.0.0.6"
+                  },
+                  {
+                      "name": "host_name",
+                      "value": "R-Lagranbe-home"
+                  },
+                  {
+                      "name": "site_id",
+                      "value": 4
+                  },
+                  {
+                      "name": "ipv6_strict_control",
+                      "value": false
+                  },
+                  {
+                      "name": "pseudo_commit_timer",
+                      "value": 300
+                  },
+                  {
+                      "name": "ServiceSide_IP",
+                      "value": "192.168.16.1"
+                  },
+                  {
+                      "name": "ServiceSide_SubnetMask",
+                      "value": "255.255.255.0"
+                  },
+                  {
+                      "name": "DHCP_Network_address",
+                      "value": "192.168.16.0"
+                  },
+                  {
+                      "name": "dhcp-server_exclude",
+                      "value": [
+                          "192.168.16.1"
+                      ]
+                  },
+                  {
+                      "name": "DHCP_GW_Addr",
+                      "value": "192.168.16.1"
+                  }
+              ]
+          }
+      ]
+  }
+}
+
+vars:pre-request {
+  xsrf-token: E3A67A8BAABDD5900CB2C4A4E8F01EE334DF29B0D2A9CC54BF0FF2C5B13D46B460946229A84050AC78350F4CB8C0992F6F68
+  serviceId: 531ba289-d220-44e7-8a21-8642f0d711a1
+  configGroupId: d9e1dc83-4770-4b61-9da0-d5e02b8be615
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

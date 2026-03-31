@@ -1,0 +1,229 @@
+meta {
+  name: Create SSE Parcel
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://{{apigwurl}}/dataservice/v1/feature-profile/sdwan/sse/{{sseProfileId}}/cisco
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+  X-XSRF-TOKEN: {{xsrf-token}}
+}
+
+body:json {
+  {
+    "name": "API-SSE-SIA-2T",
+    "description": "This is created by the API",
+    "data": {
+      "sse_instance": {
+        "optionType": "global",
+        "value": "Cisco-Secure-Access"
+      },
+      "contextSharingForVpn": {
+        "optionType": "global",
+        "value": true
+      },
+      "contextSharingForSgt": {
+        "optionType": "global",
+        "value": true
+      },
+      "region": {
+        "value": "auto",
+        "optionType": "default"
+      },
+      "ntgName": {
+        "optionType": "default",
+        "value": "auto"
+      },
+      "interface": [
+        {
+          "ifName": {
+            "optionType": "global",
+            "value": "ipsec1"
+          },
+          "shutdown": {
+            "optionType": "default",
+            "value": false
+          },
+          "tunnelSourceInterface": {
+            "optionType": "global",
+            "value": "GigabitEthernet1"
+          },
+          "tunnelRouteVia": {
+            "optionType": "default",
+            "value": "Auto"
+          },
+          "tcpMssAdjust": {
+            "optionType": "default"
+          },
+          "mtu": {
+            "optionType": "global",
+            "value": 1400
+          },
+          "tracker": {
+            "optionType": "default",
+            "value": "DefaultTracker"
+          },
+          "tunnelDcPreference": {
+            "optionType": "global",
+            "value": "primary-dc"
+          },
+          "dpdInterval": {
+            "optionType": "default",
+            "value": 10
+          },
+          "dpdRetries": {
+            "optionType": "default",
+            "value": 3
+          },
+          "ikeRekeyInterval": {
+            "optionType": "default",
+            "value": 14400
+          },
+          "ikeCiphersuite": {
+            "optionType": "default",
+            "value": "aes256-cbc-sha1"
+          },
+          "ikeGroup": {
+            "optionType": "default",
+            "value": "14"
+          },
+          "ipsecRekeyInterval": {
+            "optionType": "default",
+            "value": 3600
+          },
+          "ipsecReplayWindow": {
+            "optionType": "default",
+            "value": 512
+          },
+          "ipsecCiphersuite": {
+            "optionType": "default",
+            "value": "aes256-gcm"
+          },
+          "perfectForwardSecrecy": {
+            "optionType": "default",
+            "value": "none"
+          },
+          "trackEnable": {
+            "optionType": "default",
+            "value": true
+          }
+        },
+        {
+          "ifName": {
+            "optionType": "global",
+            "value": "ipsec2"
+          },
+          "shutdown": {
+            "optionType": "default",
+            "value": false
+          },
+          "tunnelSourceInterface": {
+            "optionType": "global",
+            "value": "GigabitEthernet1"
+          },
+          "tunnelRouteVia": {
+            "optionType": "default",
+            "value": "Auto"
+          },
+          "tcpMssAdjust": {
+            "optionType": "default"
+          },
+          "mtu": {
+            "optionType": "global",
+            "value": 1400
+          },
+          "tracker": {
+            "optionType": "default",
+            "value": "DefaultTracker"
+          },
+          "tunnelDcPreference": {
+            "optionType": "global",
+            "value": "secondary-dc"
+          },
+          "dpdInterval": {
+            "optionType": "default",
+            "value": 10
+          },
+          "dpdRetries": {
+            "optionType": "default",
+            "value": 3
+          },
+          "ikeRekeyInterval": {
+            "optionType": "default",
+            "value": 14400
+          },
+          "ikeCiphersuite": {
+            "optionType": "default",
+            "value": "aes256-cbc-sha1"
+          },
+          "ikeGroup": {
+            "optionType": "default",
+            "value": "14"
+          },
+          "ipsecRekeyInterval": {
+            "optionType": "default",
+            "value": 3600
+          },
+          "ipsecReplayWindow": {
+            "optionType": "default",
+            "value": 512
+          },
+          "ipsecCiphersuite": {
+            "optionType": "default",
+            "value": "aes256-gcm"
+          },
+          "perfectForwardSecrecy": {
+            "optionType": "default",
+            "value": "none"
+          },
+          "trackEnable": {
+            "optionType": "default",
+            "value": true
+          }
+        }
+      ],
+      "interfacePair": [
+        {
+          "activeInterface": {
+            "optionType": "global",
+            "value": "ipsec1"
+          },
+          "activeInterfaceWeight": {
+            "optionType": "global",
+            "value": 1
+          },
+          "backupInterface": {
+            "optionType": "global",
+            "value": "ipsec2"
+          },
+          "backupInterfaceWeight": {
+            "optionType": "global",
+            "value": 1
+          }
+        }
+      ],
+      "tracker": [],
+      "trackerSrcIp": {
+        "value": "{{tracker_Src_IP}}",
+        "optionType": "variable"
+      }
+    }
+  }
+}
+
+vars:pre-request {
+  xsrf-token: E3A67A8BAABDD5900CB2C4A4E8F01EE334DF29B0D2A9CC54BF0FF2C5B13D46B460946229A84050AC78350F4CB8C0992F6F68
+  sseProfileId: 21d247ed-3e08-491c-ba15-00ae207e7b68
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

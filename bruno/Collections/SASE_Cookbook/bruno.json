@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "SASE_Cookbook",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
