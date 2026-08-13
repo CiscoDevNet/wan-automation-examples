@@ -36,6 +36,7 @@ wan-automation-examples/
 │   ├── bruno/
 │   ├── python/
 │   └── terraform/
+├── scripts/
 └── README.md
 ```
 
@@ -89,4 +90,4 @@ The `LICENSE` file should contain the license you intend for the source code in 
 
 The `SECURITY.md` file describes security policies and procedures including reporting a security-related bug and the policy on disclosure.
 
-The `AGENTS.md` file contains a template for guiding AI agents that work with your repository.
+The `AGENTS.md` file contains repository-specific guidance for coding agents.

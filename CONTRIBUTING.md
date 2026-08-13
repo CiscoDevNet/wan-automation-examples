@@ -165,6 +165,24 @@ and a linked issue when applicable. Mention any required product version,
 feature flag, or lab setup. Keep the pull request small enough to review as one
 coherent change.
 
+The optional helper validates the configured remotes, branch, and pushed HEAD
+before targeting `CiscoDevNet/wan-automation-examples:main`:
+
+```bash
+./scripts/create-upstream-pr.sh          # validate and preview
+./scripts/create-upstream-pr.sh --web    # finish the PR in a browser
+./scripts/create-upstream-pr.sh --create # create the PR directly
+./scripts/create-upstream-pr.sh --no-ai  # skip optional Codex generation
+```
+
+It requires an authenticated [GitHub CLI](https://cli.github.com/) session and
+expects `origin` to be your `wan-automation-examples` fork and `upstream` to be
+`CiscoDevNet/wan-automation-examples`. When the Codex CLI is available, the
+helper proposes a title and a description containing `Summary`, `Changes`, and,
+when useful, `Notes`. If Codex is unavailable or generation fails, the helper
+continues with the standard GitHub CLI workflow. Explicit GitHub CLI content
+options such as `--title`, `--body`, or `--fill` also take precedence over Codex.
+
 By participating, you agree to follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## 3. Keep an Existing Branch Current
