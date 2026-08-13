@@ -1,39 +1,48 @@
-# Security Policies and Procedures
+# Security
 
-This document outlines security procedures and general policies for the
-`<project name>` project.
+This repository contains learning and demonstration examples for Cisco
+Catalyst SD-WAN Manager and the Meraki Dashboard. The examples are not a
+production-supported SDK or application and do not have a formal release or
+security-support lifecycle.
 
-- [Reporting a Bug](#reporting-a-bug)
-- [Disclosure Policy](#disclosure-policy)
-- [Comments on this Policy](#comments-on-this-policy)
+## Using the Examples Safely
 
-## Reporting a Bug
+Review and test each example before using it in your environment. In
+particular:
 
-The `<project name>` team and community take all security bugs in
-`<project name>` seriously. Thank you for improving the security of
-`<project name>`. We appreciate your efforts and responsible disclosure and
-will make every effort to acknowledge your contributions.
+- Use a lab environment whenever possible.
+- Use credentials with the minimum required privileges.
+- Store credentials in local environment files or a secret store; never commit
+  them to the repository.
+- Keep TLS certificate verification enabled. Use `--insecure` only in an
+  isolated lab when no trusted certificate is available.
+- Review configuration-changing requests before running them and use only
+  systems you are authorized to manage.
+- Do not commit Terraform state, customer configurations, API responses, or
+  generated payloads containing environment data.
+- Review dependencies according to your organization's security requirements.
 
-Report security bugs by emailing `oss-security@cisco.com`.
+## Reporting a Problem in an Example
 
-The lead maintainer will acknowledge your email within 48 hours, and will send a
-more detailed response within 48 hours indicating the next steps in handling
-your report. After the initial reply to your report, the security team will
-endeavor to keep you informed of the progress towards a fix and full
-announcement, and may ask for additional information or guidance.
+If an example handles credentials unsafely, exposes sensitive information, or
+has another security-related problem, open a
+[GitHub issue](https://github.com/CiscoDevNet/wan-automation-examples/issues)
+with the affected file and a description of the problem.
 
-## Disclosure Policy
+Do not include real API keys, passwords, tokens, certificates, customer data,
+private configurations, or other sensitive information. If demonstrating the
+problem would require publishing sensitive details, open an issue with only a
+high-level description and ask the maintainers how to share the remaining
+information privately.
 
-When the security team receives a security bug report, they will assign it to a
-primary handler. This person will coordinate the fix and release process,
-involving the following steps:
+Fixes are made against the latest code on the `main` branch. Older commits,
+forks, and copied examples are not maintained.
 
-- Confirm the problem and determine the affected versions.
-- Audit code to find any potential similar problems.
-- Prepare fixes for all releases still under maintenance. These fixes will be
-  released as quickly as possible.
+## Cisco Product Vulnerabilities
 
-## Comments on this Policy
-
-If you have suggestions on how this process could be improved please submit a
-pull request.
+This repository contains API clients and examples; it does not implement
+Cisco Catalyst SD-WAN Manager or the Meraki Dashboard. A vulnerability in a
+Cisco product or Cisco-hosted service should be reported through the
+[Cisco Product Security Incident Response Team
+(PSIRT)](https://sec.cloudapps.cisco.com/security/center/resources/security_vulnerability_policy.html),
+not as an issue in this examples repository.
