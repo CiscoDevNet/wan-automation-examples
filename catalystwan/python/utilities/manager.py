@@ -1,353 +1,170 @@
-#! /usr/bin/env python3
-# =========================================================================
-# Cisco Catalyst SD-WAN Manager APIs
-# =========================================================================
-#
-# Authentication and common API methods
-#
-# Description:
-#   Session-based authentication for Cisco SD-WAN Manager
-#   Log in with a username and password to establish a session.
-#   Get a cross-site request forgery prevention token, necessary for most POST operations
-#
-# =========================================================================
+"""API-key client for Cisco Catalyst SD-WAN Manager."""
 
-import json
-import logging
-import os
-import sys
-from typing import Optional, cast
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any, Self
 
 import requests
-import urllib3
-
-logger = logging.getLogger(__name__)
-
-# Disable insecure request warnings globally
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
-# ----------------------------------------------------------
-class Manager:
+@dataclass(slots=True)
+class ManagerAPIError(RuntimeError):
+    """An HTTP or response error returned by SD-WAN Manager."""
+
+    message: str
+    method: str | None = None
+    path: str | None = None
+    status_code: int | None = None
+    response_text: str | None = None
+
+    def __str__(self) -> str:
+        context = " ".join(part for part in (self.method, self.path) if part)
+        status = f"HTTP {self.status_code}" if self.status_code else ""
+        prefix = " ".join(part for part in (context, status) if part)
+        detail = f": {self.response_text}" if self.response_text else ""
+        return f"{prefix}: {self.message}{detail}" if prefix else f"{self.message}{detail}"
+
+
+class ManagerClient:
+    """Authenticated API-key client for the `/dataservice` API.
+
+    The client obtains an XSRF token during construction and sends both the
+    bearer API key and token on all subsequent requests. TLS verification is
+    enabled unless `verify=False` is explicitly selected for a lab system.
     """
-    Handles session-based authentication for SD-WAN Manager and provides common API methods.
-    """
 
-    def __init__(self, host, port, user, password, validate_certs=False, timeout=10):
-        """
-        Initialize Manager object with session parameters and perform authentication.
-        Args:
-            host (str): hostname or IP address of SD-WAN Manager
-            user (str): username for authentication
-            password (str): password for authentication
-            port (int): default HTTPS port 443
-            validate_certs (bool): turn certificate validation on or off.
-            timeout (int): how long Requests will wait for a response from the server, default 10 seconds
-        """
-        self.host = host
-        self.port = port
-        self.user = user
-        self.password = password
+    def __init__(
+        self,
+        vmanage: str,
+        api_key: str,
+        *,
+        port: int = 443,
+        verify: bool | str = True,
+        timeout: float = 30.0,
+        session: requests.Session | None = None,
+    ) -> None:
+        if not vmanage.strip():
+            raise ValueError("vmanage must not be empty")
+        if not api_key.strip():
+            raise ValueError("api_key must not be empty")
+        if timeout <= 0:
+            raise ValueError("timeout must be greater than zero")
+
+        host = vmanage.strip().removeprefix("https://").removeprefix("http://")
+        self.base_url = f"https://{host.rstrip('/')}:{port}/dataservice"
         self.timeout = timeout
-        self.base_url = f"https://{self.host}:{self.port}"  # Base URL for login/token
-        self.session = requests.Session()
-        self.session.verify = validate_certs
-        self.jsessionid = None
-        self.token = None
-        self.dataservice_base_url = None  # Base URL for API calls (e.g., /dataservice)
-        self.version = None  # Will be populated by about() method
-        self.applicationVersion = None  # Will be populated by about() method
-        self.applicationServer = None  # Will be populated by about() method
-        self.time = None  # Will be populated by about() method
-        self.timeZone = None  # Will be populated by about() method
-        self.status = False  # Indicates if authentication was successful
-
-        # Perform authentication during initialization
-        self._authenticate()
-        if self.dataservice_base_url:  # Check if authentication was successful
-            self.status = True
-            print("Authentication successful.")
-            logger.info("Successfully authenticated with SD-WAN Manager.")
-            logger.info(f"Session headers: {self.session.headers}")
-            logger.info(f"Base URL: {self.dataservice_base_url}")
-
-        else:
-            print("Authentication failed. Please check sdwan_api.log for details.")
-            logger.error("Failed to authenticate with SD-WAN Manager. Exiting.")
-            sys.exit(1)  # Exit if authentication fails
-
-        self.about()  # Populate version and other info
-
-    def _login(self):
-        """
-        Performs the initial login to get the JSESSIONID.
-        The requests.Session object will automatically manage the cookies.
-        """
-        api = "/j_security_check"
-        url = self.base_url + api
-        payload = {"j_username": self.user, "j_password": self.password}
-
-        response = None
-        try:
-            response = self.session.post(url=url, data=payload, timeout=self.timeout)
-            response.raise_for_status()
-
-            cookies = response.headers.get("Set-Cookie")
-            if not cookies:
-                raise ValueError("No 'Set-Cookie' header found in login response.")
-            self.jsessionid = cookies.split(";")[0]
-            return self.jsessionid
-
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Login failed: {e}. Response: {response.text if response is not None else 'No response'}\n")
-            return None  # Indicate failure
-        except ValueError as e:
-            logger.error(f"Login failed: {e}\n")
-            return None  # Indicate failure
-
-    def _get_token(self):
-        """
-        Retrieves the X-XSRF-TOKEN.
-        """
-        if not self.jsessionid:
-            logger.warning("JSESSIONID not set, attempting login before getting token.")
-            if not self._login():  # Try to login if jsessionid is missing
-                return None
-
-        api = "/dataservice/client/token"
-        url = self.base_url + api
-
-        response = None
-        try:
-            response = self.session.get(url=url, timeout=self.timeout)
-            response.raise_for_status()
-            self.token = response.text
-            return self.token
-
-        except requests.exceptions.RequestException as e:
-            logger.error(
-                f"Failed to get X-XSRF-TOKEN: {e}. Status: {response.status_code if response is not None else 'N/A'}, Response: {response.text if response is not None else 'No response'}\n"
-            )
-            return None
-
-    def _authenticate(self):
-        """
-        Performs login and token retrieval, then configures the session with default headers.
-        Sets self.dataservice_base_url and updates self.session headers.
-        """
-        self.jsessionid = self._login()
-        if not self.jsessionid:
-            return  # Authentication failed at login
-
-        self.token = self._get_token()
-        # If token retrieval fails, a warning is logged, but we proceed as some APIs might not require it.
-        # The session headers are updated regardless.
-
+        self.session = session or requests.Session()
+        self.session.verify = verify
         self.session.headers.update(
             {
+                "Accept": "application/json",
                 "Content-Type": "application/json",
+                "Authorization": f"Bearer {api_key}",
             }
         )
-        if self.token:
-            self.session.headers.update({"X-XSRF-TOKEN": self.token})
+        self.refresh_xsrf_token()
 
-        self.dataservice_base_url = f"https://{self.host}:{self.port}/dataservice"
+    def __enter__(self) -> Self:
+        return self
 
-    def about(self):
-        """
-        Fetches and returns key information about the SD-WAN Manager application.
+    def __exit__(self, *_: object) -> None:
+        self.close()
 
-        Returns:
-            Optional[Dict[str, Any]]: A dictionary containing 'version',
-            'applicationVersion', 'applicationServer', 'time', and 'timeZone'
-            if successful, otherwise None.
-        """
-        api_path = "/client/about"
+    def close(self) -> None:
+        """Close the underlying HTTP session."""
+        self.session.close()
 
+    def refresh_xsrf_token(self) -> str:
+        """Obtain and install the XSRF token associated with the API key."""
+        response = self._send("GET", "/client/token", include_xsrf=False)
+        token = response.text.strip()
+        if not token or "<html" in token.lower():
+            raise ManagerAPIError(
+                "Manager returned an invalid XSRF token",
+                method="GET",
+                path="/client/token",
+                status_code=response.status_code,
+                response_text=token[:500],
+            )
+        self.session.headers["X-XSRF-TOKEN"] = token
+        return token
+
+    def request(
+        self,
+        method: str,
+        path: str,
+        *,
+        params: dict[str, Any] | None = None,
+        payload: Any = None,
+    ) -> Any:
+        """Send an API request and decode its JSON response when present."""
+        response = self._send(method, path, params=params, payload=payload)
+        if response.status_code == 204 or not response.content:
+            return None
         try:
-            full_payload = self._api_get(api_path)
+            return response.json()
+        except requests.JSONDecodeError:
+            content_type = response.headers.get("Content-Type", "")
+            if "json" not in content_type.lower():
+                return response.text
+            raise ManagerAPIError(
+                "Manager returned malformed JSON",
+                method=method.upper(),
+                path=path,
+                status_code=response.status_code,
+                response_text=response.text[:500],
+            ) from None
 
-            # The actual data is nested under the "data" key in the payload
-            data = full_payload.get("data")
+    def get(self, path: str, *, params: dict[str, Any] | None = None) -> Any:
+        return self.request("GET", path, params=params)
 
-            self.version = data.get("version")
-            self.applicationVersion = data.get("applicationVersion")
-            self.applicationServer = data.get("applicationServer")
-            self.time = data.get("time")
-            self.timeZone = data.get("timeZone")
+    def post(
+        self,
+        path: str,
+        *,
+        payload: Any = None,
+        params: dict[str, Any] | None = None,
+    ) -> Any:
+        return self.request("POST", path, params=params, payload=payload)
 
-            # Print the information
-            print("\nSD-WAN Manager Information:")
-            print(f" Version: {self.version}")
-            print(f" Application Version: {self.applicationVersion}")
-            print(f" Application Server: {self.applicationServer}")
-            print(f" Time: {self.time}")
-            print(f" Time Zone: {self.timeZone}")
-            print()
+    def put(self, path: str, *, payload: Any = None) -> Any:
+        return self.request("PUT", path, payload=payload)
 
-        except requests.exceptions.RequestException as e:
-            print(f"An unexpected error occurred: {e}")
-            if hasattr(e, "response") and e.response is not None:
-                print(f"Status: {e.response.status_code}, Response: {e.response.text}")
-            return
+    def delete(self, path: str, *, params: dict[str, Any] | None = None) -> Any:
+        return self.request("DELETE", path, params=params)
 
-    def _api_get(self, path: str, params: Optional[dict] = None):
-        """
-        Helper method to make a GET request to the SD-WAN Manager API.
-        Handles URL construction, uses the authenticated session, and checks for HTTP errors.
+    def about(self) -> Any:
+        return self.get("/client/about")
 
-        Args:
-            path (str): The API endpoint path (e.g., "/v1/config-group/").
-            params (dict, optional): Dictionary of query parameters. Defaults to None.
-
-        Returns:
-            dict: The JSON response from the API.
-
-        Raises:
-            requests.exceptions.RequestException: If the API call fails or manager is not authenticated.
-        """
-        if not self.status:
-            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
-
-        url = cast(str, self.dataservice_base_url) + path
-        logger.info(f"Making GET request to: {url} with params: {params}")
-        response = self.session.get(url=url, params=params)
-        response.raise_for_status()
-        return response.json()
-
-    def _api_post(self, path: str, payload: Optional[dict] = None):
-        """
-        Helper method to make a POST request to the SD-WAN Manager API.
-        Handles URL construction, uses the authenticated session, and checks for HTTP errors.
-
-        Args:
-            path (str): The API endpoint path (e.g., "/v1/config-group/").
-            payload (dict, optional): Dictionary to send in the body of the POST request. Defaults to None.
-
-        Returns:
-            dict: The JSON response from the API.
-
-        Raises:
-            requests.exceptions.RequestException: If the API call fails or manager is not authenticated.
-        """
-        if not self.status:
-            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
-
-        url = cast(str, self.dataservice_base_url) + path
-        logger.info(f"Making POST request to: {url} with payload: {payload}")
-        response = self.session.post(url=url, json=payload)
-        response.raise_for_status()
-
-        return response.json()
-
-    def _api_put(self, path: str, payload: Optional[dict] = None):
-        """
-        Helper method to make a PUT request to the SD-WAN Manager API.
-        Handles URL construction, uses the authenticated session, and checks for HTTP errors.
-
-        Args:
-            path (str): The API endpoint path.
-            payload (dict, optional): Dictionary to send in the body of the PUT request. Defaults to None.
-
-        Returns:
-            dict: The JSON response from the API.
-
-        Raises:
-            requests.exceptions.RequestException: If the API call fails or manager is not authenticated.
-        """
-        if not self.status:
-            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
-
-        url = cast(str, self.dataservice_base_url) + path
-        logger.info(f"Making PUT request to: {url} with payload: {payload}")
-        response = self.session.put(url=url, json=payload)
-        response.raise_for_status()
-
-        return response.json()
-
-    def _api_delete(self, path: str, params: Optional[dict] = None):
-        """
-        Helper method to make a DELETE request to the SD-WAN Manager API.
-        Handles URL construction, uses the authenticated session, and checks for HTTP errors.
-
-        Args:
-            path (str): The API endpoint path.
-            params (dict, optional): Dictionary of query parameters. Defaults to None.
-
-        Returns:
-            dict: The JSON response from the API (often empty or a confirmation message).
-
-        Raises:
-            requests.exceptions.RequestException: If the API call fails or manager is not authenticated.
-        """
-        if not self.status:
-            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
-
-        url = cast(str, self.dataservice_base_url) + path
-        response = self.session.delete(url=url, params=params)
-        logger.info(f"Making DELETE request to: {url} with params: {params}")
-        response.raise_for_status()
-
-        # DELETE requests often return 204 No Content, so response.json() might fail.
-        # Check if there's content before trying to parse JSON.
-        if response.content:
-            try:
-                return response.json()
-            except json.JSONDecodeError:
-                logger.warning(f"DELETE response content is not JSON: {response.text}")
-                return {"message": "Operation successful, no JSON response content."}
-        else:
-            return {"message": "Operation successful, no content returned."}
-
-    def logout(self):
-        """
-        Logs out of the SD-WAN Manager session.
-        """
-
-        if not self.status:
-            raise requests.exceptions.RequestException("Manager not authenticated. Cannot make API call.")
-
-        api = "/logout"
-        url = self.base_url + api
-        # url = cast(str, self.dataservice_base_url) + path
-        logger.info(f"Logout: {url}")
-        response = self.session.post(url=url)
-        response.raise_for_status()
-        logger.info("Successfully logged out of SD-WAN Manager.")
-
-
-# ----------------------------------------------------------
-def get_manager_credentials_from_env():
-    """
-    Retrieves manager credentials from environment variables.
-    Exits if any required variable is missing.
-    """
-
-    from dotenv import load_dotenv
-
-    load_dotenv()
-
-    manager_host = os.getenv("manager_host")
-    manager_port = os.getenv("manager_port")
-    manager_username = os.getenv("manager_username")
-    manager_password = os.getenv("manager_password")
-
-    # Check for None values first
-    if not all([manager_host, manager_port, manager_username, manager_password]):
-        print(
-            "Manager details must be set in a .env file in the project root directory.\n"
-            "Please create a .env file with the following variables:\n\n"
-            "Example .env file content:\n"
-            "  manager_host=198.18.1.10\n"
-            "  manager_port=8443\n"
-            "  manager_username=admin\n"
-            "  manager_password=admin"
-        )
-        sys.exit(1)
-
-    return (
-        manager_host,
-        int(manager_port) if manager_port else 0,
-        manager_username,
-        manager_password,
-    )
+    def _send(
+        self,
+        method: str,
+        path: str,
+        *,
+        params: dict[str, Any] | None = None,
+        payload: Any = None,
+        include_xsrf: bool = True,
+    ) -> requests.Response:
+        normalized_path = path if path.startswith("/") else f"/{path}"
+        headers = None if include_xsrf else {"X-XSRF-TOKEN": None}
+        try:
+            response = self.session.request(
+                method.upper(),
+                f"{self.base_url}{normalized_path}",
+                params=params,
+                json=payload,
+                headers=headers,
+                timeout=self.timeout,
+            )
+            response.raise_for_status()
+            return response
+        except requests.RequestException as error:
+            response = getattr(error, "response", None)
+            raise ManagerAPIError(
+                "API request failed",
+                method=method.upper(),
+                path=normalized_path,
+                status_code=response.status_code if response is not None else None,
+                response_text=(response.text.strip()[:500] if response is not None else str(error)),
+            ) from error

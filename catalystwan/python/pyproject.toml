@@ -1,0 +1,14 @@
+[project]
+name = "sdwan-api-examples"
+version = "0.1.0"
+description = "Extensible Cisco Catalyst SD-WAN Manager API examples"
+requires-python = ">=3.12,<3.13"
+dependencies = ["requests>=2.31,<3"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["SIM112"] # Bruno-compatible environment names are intentionally lowercase.
