@@ -2,11 +2,17 @@
 
 ## Introduction
 
-[Cisco Catalyst SD-WAN API Official documentation](https://developer.cisco.com/docs/sdwan/)
-
-This repository provides Python and Terraform examples for interacting with Cisco Catalyst SD-WAN Manager and the Meraki Dashboard APIs. Explore practical demonstrations for automating network configurations, monitoring, and integrations.
+This repository provides Python and Terraform examples for interacting
+with Cisco Catalyst SD-WAN Manager and the Meraki Dashboard APIs.
+Explore practical demonstrations for automating network configurations, monitoring, and integrations.
 
 Please note these examples are for demonstration purposes only and not production-ready.
+
+For guided Cisco Catalyst SD-WAN lessons, API concepts, configuration and
+monitoring workflows, and hands-on lab material, visit the
+[Catalyst SD-WAN API Learning Hub](https://jbarozet.github.io/catalyst-sdwan-api-hub/).
+For the product API reference, see the
+[official Cisco Catalyst SD-WAN API documentation](https://developer.cisco.com/docs/sdwan/).
 
 ## Install and Setup
 
@@ -21,16 +27,15 @@ git clone https://github.com/CiscoDevNet/wan-automation-examples.git
 ```example
 wan-automation-examples/
 ├── bruno/
-├── docs/
 ├── catalystwan/
-    ├── docs/
-    ├── python/
-    ├── terraform/
+│   ├── lab/
+│   ├── mcp-sdwan/
+│   ├── python/
+│   └── terraform/
 ├── meraki/
-    ├── docs/
-    ├── python/
-    ├── terraform/
-├── README.md
+│   ├── python/
+│   └── terraform/
+└── README.md
 ```
 
 bruno:
@@ -43,6 +48,8 @@ catalystwan:
 
 - python examples. Visit [README](catalystwan/python/README.md)
 - terraform examples. Visit [README](catalystwan/terraform/README.md)
+- archived scripts retained for older Cisco API documentation. Visit
+  [README](catalystwan/lab/README.md)
 
 meraki:
 
