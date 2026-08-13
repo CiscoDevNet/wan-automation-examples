@@ -37,7 +37,7 @@ uv sync
 ```
 
 Copy the environment template and provide the same API-key values used by the
-Bruno collection:
+[Catalyst SD-WAN Bruno collection](../bruno/):
 
 ```shell
 cp .env.example .env

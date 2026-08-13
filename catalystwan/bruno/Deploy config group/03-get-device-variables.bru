@@ -1,0 +1,25 @@
+meta {
+  name: 03 - Get Device Variables (discover)
+  type: http
+  seq: 3
+}
+
+docs {
+  Discovers the per-device variables that this Configuration Group expects for the selected device.
+
+  Review this response before running `04 - Set Device Variables`. The names in the response are the only names Manager accepts in the PUT payload.
+
+  Values that were sent as `optionType: "global"` while creating parcels, such as the Bruno lab interface IPs and AAA password, are not deploy-time variables and should not be included in the next request.
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/config-group/{{configGroupId}}/device/variables?device-id={{device_id}}&suggestions=true
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}

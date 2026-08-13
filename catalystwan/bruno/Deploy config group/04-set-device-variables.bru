@@ -1,0 +1,48 @@
+meta {
+  name: 04 - Set Device Variables
+  type: http
+  seq: 4
+}
+
+docs {
+  Assigns values to the per-device variables returned by `03 - Get Device Variables (discover)`.
+
+  This request intentionally only sends the deploy-time variables Manager expects for the lab device:
+  - `host_name`
+  - `system_ip`
+  - `site_id`
+  - `pseudo_commit_timer`
+  - `ipv6_strict_control`
+
+  Do not add Bruno environment names such as `aaa_password`, `vpn0_gi1_inet_ip`, `vpn0_gi2_mpls_ip`, or `vpn1_gi3_lan_ip` here. Those values are already sent as `optionType: "global"` when the parcels are created, so Manager rejects them as unknown deploy variables.
+}
+
+put {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/config-group/{{configGroupId}}/device/variables
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "solution": "sdwan",
+    "devices": [
+      {
+        "device-id": "{{device_id}}",
+        "variables": [
+          { "name": "host_name", "value": "{{hostname}}" },
+          { "name": "system_ip", "value": "{{system_ip}}" },
+          { "name": "site_id", "value": {{site_id}} },
+          { "name": "pseudo_commit_timer", "value": {{pseudo_commit_timer}} },
+          { "name": "ipv6_strict_control", "value": false }
+        ]
+      }
+    ]
+  }
+}

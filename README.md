@@ -26,26 +26,22 @@ git clone https://github.com/CiscoDevNet/wan-automation-examples.git
 
 ```example
 wan-automation-examples/
-├── bruno/
 ├── catalystwan/
+│   ├── bruno/
 │   ├── lab/
 │   ├── mcp-sdwan/
 │   ├── python/
 │   └── terraform/
 ├── meraki/
+│   ├── bruno/
 │   ├── python/
 │   └── terraform/
 └── README.md
 ```
 
-bruno:
-
-- Similar to postman collections
-- A few examples of APIs
-- Visit [README](bruno/README.md)
-
 catalystwan:
 
+- Bruno API collection. Visit [README](catalystwan/bruno/README.md)
 - python examples. Visit [README](catalystwan/python/README.md)
 - terraform examples. Visit [README](catalystwan/terraform/README.md)
 - archived scripts retained for older Cisco API documentation. Visit
@@ -53,8 +49,13 @@ catalystwan:
 
 meraki:
 
+- Bruno API collection. Visit [README](meraki/bruno/README.md)
 - python examples
 - terraform examples
+
+The Bruno collections are stored beside the Python and Terraform examples for
+their respective platforms. [Bruno](https://www.usebruno.com/) is a local-first
+API client that keeps collections in Git-friendly text files.
 
 ## Setup Python Environment
 

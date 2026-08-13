@@ -1,0 +1,28 @@
+meta {
+  name: 01 - List Config Groups (resolve ID by name)
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/config-group?solution=sdwan
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+script:post-response {
+  // Find config group by name and store its id as configGroupId
+  const targetName = bru.getEnvVar("config_group_name") || "bruno_edge_basic";
+  const list = res.getBody();
+  const match = Array.isArray(list) ? list.find(g => g.name === targetName) : null;
+  if (!match) {
+    throw new Error(`Config group '${targetName}' not found`);
+  }
+  bru.setEnvVar("configGroupId", match.id);
+}

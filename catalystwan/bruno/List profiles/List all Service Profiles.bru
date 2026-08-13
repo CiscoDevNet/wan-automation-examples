@@ -1,0 +1,33 @@
+meta {
+  name: List all Service Profiles
+  type: http
+  seq: 3
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/service/
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+script:post-response {
+  const body = res.getBody();
+  const profiles = body.data || body.items || body;
+  const profile = Array.isArray(profiles) ? profiles.find((item) => (item.name || item.profileName) === "bruno_edge_lan") : undefined;
+  const id = profile && (profile.id || profile.profileId);
+  const uuid = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+  if (uuid.test(id || "")) {
+    bru.setEnvVar("serviceProfileId", id);
+  }
+}

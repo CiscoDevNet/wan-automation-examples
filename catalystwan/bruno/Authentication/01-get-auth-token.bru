@@ -1,0 +1,20 @@
+meta {
+  name: 01 - Get Auth Token
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/client/token
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+script:post-response {
+  bru.setVar("X-XSRF-TOKEN", res.body);
+}

@@ -1,0 +1,70 @@
+meta {
+  name: 04 - Aggregate Interface Statistics Query
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/statistics/interface/aggregation
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "query": {
+      "condition": "AND",
+      "rules": [
+        {
+          "value": ["6"],
+          "field": "entry_time",
+          "type": "date",
+          "operator": "last_n_hours"
+        },
+        {
+          "value": ["{{system_ip}}"],
+          "field": "vdevice_name",
+          "type": "string",
+          "operator": "in"
+        }
+      ]
+    },
+    "sort": [
+      {
+        "field": "entry_time",
+        "type": "date",
+        "order": "asc"
+      }
+    ],
+    "aggregation": {
+      "field": [
+        {
+          "property": "interface",
+          "sequence": 1
+        }
+      ],
+      "histogram": {
+        "property": "entry_time",
+        "type": "minute",
+        "interval": 30,
+        "order": "asc"
+      },
+      "metrics": [
+        {
+          "property": "rx_kbps",
+          "type": "avg"
+        },
+        {
+          "property": "tx_kbps",
+          "type": "avg"
+        }
+      ]
+    }
+  }
+}

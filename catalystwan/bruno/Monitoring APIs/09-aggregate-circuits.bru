@@ -1,0 +1,60 @@
+meta {
+  name: 09 - Aggregate Circuits by Availability
+  type: http
+  seq: 9
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/statistics/nwa/details
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "query": {
+      "condition": "AND",
+      "rules": [
+        {
+          "value": ["24"],
+          "field": "entry_time",
+          "type": "date",
+          "operator": "last_n_hours"
+        },
+        {
+          "value": ["link"],
+          "field": "type",
+          "type": "string",
+          "operator": "in"
+        }
+      ]
+    },
+    "aggregation": {
+      "field": [
+        {
+          "property": "system_ip",
+          "sequence": 1,
+          "size": 100
+        },
+        {
+          "property": "color",
+          "sequence": 2,
+          "size": 100
+        }
+      ],
+      "metrics": [
+        {
+          "property": "down_time",
+          "type": "sum",
+          "order": "desc"
+        }
+      ]
+    }
+  }
+}

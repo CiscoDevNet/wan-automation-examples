@@ -1,0 +1,49 @@
+meta {
+  name: 07 - Aggregate Applications by Utilization
+  type: http
+  seq: 7
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/statistics/dpi/aggregation
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "query": {
+      "condition": "AND",
+      "rules": [
+        {
+          "value": ["1000"],
+          "field": "entry_time",
+          "type": "date",
+          "operator": "last_n_hours"
+        }
+      ]
+    },
+    "aggregation": {
+      "field": [
+        {
+          "property": "family",
+          "size": 200,
+          "sequence": 1
+        }
+      ],
+      "metrics": [
+        {
+          "property": "octets",
+          "type": "sum",
+          "order": "desc"
+        }
+      ]
+    }
+  }
+}

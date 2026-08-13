@@ -58,7 +58,8 @@ cd ../..
 Terraform and Bruno changes require their respective CLIs. See
 [Catalyst SD-WAN Terraform](catalystwan/terraform/README.md),
 [Meraki Terraform](meraki/terraform/README.md), and
-[Bruno](bruno/README.md) for area-specific setup.
+[Catalyst SD-WAN Bruno](catalystwan/bruno/README.md) or
+[Meraki Bruno](meraki/bruno/README.md) for area-specific setup.
 
 ## 2. Make and Submit a Change
 

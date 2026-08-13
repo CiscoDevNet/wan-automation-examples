@@ -1,0 +1,64 @@
+meta {
+  name: 02 - Create System Parcel - AAA
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/system/{{systemProfileId}}/aaa
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "bruno_edge_aaa",
+    "description": "Do not modify!",
+    "data": {
+      "authenticationGroup": {
+        "optionType": "default",
+        "value": false
+      },
+      "accountingGroup": {
+        "optionType": "default",
+        "value": false
+      },
+      "serverAuthOrder": {
+        "optionType": "global",
+        "value": [
+          "local"
+        ]
+      },
+      "authorizationConsole": {
+        "optionType": "default",
+        "value": false
+      },
+      "authorizationConfigCommands": {
+        "optionType": "default",
+        "value": false
+      },
+      "user": [
+        {
+          "name": {
+            "optionType": "global",
+            "value": "admin"
+          },
+          "password": {
+            "optionType": "global",
+            "value": "{{aaa_password}}"
+          },
+          "privilege": {
+            "optionType": "default",
+            "value": "15"
+          }
+        }
+      ]
+    }
+  }
+}

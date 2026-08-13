@@ -1,0 +1,37 @@
+meta {
+  name: 10 - Delete Bruno CLI Profile
+  type: http
+  seq: 10
+}
+
+docs {
+  Deletes the CLI Feature Profile identified by `cleanCliProfileId`.
+
+  Run `09 - List Bruno CLI Profiles` first so the environment variable is populated.
+
+  If `cleanCliProfileCount` is greater than 1, rerun the list/delete pair until no `bruno_edge_` CLI profiles remain.
+}
+
+delete {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/cli/{{cleanCliProfileId}}
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+script:pre-request {
+  const id = bru.getEnvVar("cleanCliProfileId");
+  const uuid = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+  if (!uuid.test(id || "")) {
+    throw new Error("cleanCliProfileId is missing. Run '09 - List Bruno CLI Profiles' first.");
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("cleanCliProfileId", "");
+}

@@ -1,0 +1,40 @@
+meta {
+  name: 01 - List Bruno Config Groups
+  type: http
+  seq: 1
+}
+
+docs {
+  Lists SD-WAN Configuration Groups and finds groups whose name starts with the cleanup prefix.
+
+  The prefix comes from the `clean_name_prefix` environment variable and defaults to `bruno_edge_`.
+
+  This request saves:
+  - `cleanConfigGroupCount`: number of matching Configuration Groups
+  - `cleanConfigGroupId`: first matching Configuration Group ID, used by the next delete request
+
+  Run this before `02 - Delete Bruno Config Group`. If the count is greater than 1, repeat this list/delete pair until the count reaches 0.
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/config-group?solution=sdwan
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+script:post-response {
+  const prefix = bru.getEnvVar("clean_name_prefix") || "bruno_edge_";
+  const body = res.getBody();
+  const groups = body.data || body.items || body;
+  const matches = Array.isArray(groups) ? groups.filter((item) => (item.name || "").startsWith(prefix)) : [];
+  const first = matches[0];
+
+  bru.setEnvVar("cleanConfigGroupCount", String(matches.length));
+  bru.setEnvVar("cleanConfigGroupId", first ? (first.id || first.configGroupId || "") : "");
+}

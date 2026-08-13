@@ -1,0 +1,66 @@
+meta {
+  name: 01 - Create Configuration Group
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/config-group
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+script:pre-request {
+  const uuid = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+  const requiredIds = [
+    "systemProfileId",
+    "transportProfileId",
+    "serviceProfileId",
+    "cliProfileId"
+  ];
+
+  for (const name of requiredIds) {
+    const value = bru.getEnvVar(name);
+    if (!uuid.test(value || "")) {
+      throw new Error(`${name} is missing or not a UUID. Re-run the matching Create * Profile request, or run the matching List all * Profiles helper to recover an existing profile ID.`);
+    }
+  }
+}
+
+body:json {
+  {
+    "name": "bruno_edge_basic",
+    "description": "Do not modify!",
+    "solution": "sdwan",
+    "profiles": [
+      {
+        "id": "{{systemProfileId}}"
+      },
+      {
+        "id": "{{transportProfileId}}"
+      },
+      {
+        "id": "{{serviceProfileId}}"
+      },
+      {
+        "id": "{{cliProfileId}}"
+      }
+    ]
+  }
+}
+
+script:post-response {
+  const body = res.getBody();
+  const id = body.id || body.configGroupId;
+  const uuid = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+  if (!uuid.test(id || "")) {
+    throw new Error(`Create Configuration Group did not return a valid UUID: ${JSON.stringify(body)}`);
+  }
+  bru.setEnvVar("configGroupId", id);
+}

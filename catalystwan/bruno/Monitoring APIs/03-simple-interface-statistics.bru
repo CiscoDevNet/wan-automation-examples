@@ -1,0 +1,54 @@
+meta {
+  name: 03 - Simple Interface Statistics Query
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/statistics/interface?pageSize=100
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "query": {
+      "condition": "AND",
+      "rules": [
+        {
+          "value": ["6"],
+          "field": "entry_time",
+          "type": "date",
+          "operator": "last_n_hours"
+        },
+        {
+          "value": ["{{system_ip}}"],
+          "field": "vdevice_name",
+          "type": "string",
+          "operator": "in"
+        }
+      ]
+    },
+    "fields": [
+      "entry_time",
+      "vdevice_name",
+      "host_name",
+      "interface",
+      "rx_kbps",
+      "tx_kbps"
+    ],
+    "sort": [
+      {
+        "field": "entry_time",
+        "type": "date",
+        "order": "desc"
+      }
+    ]
+  }
+}

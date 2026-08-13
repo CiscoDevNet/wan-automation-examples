@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Catalyst SD-WAN",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

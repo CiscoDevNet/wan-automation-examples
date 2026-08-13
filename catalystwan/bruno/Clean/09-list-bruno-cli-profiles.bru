@@ -1,0 +1,38 @@
+meta {
+  name: 09 - List Bruno CLI Profiles
+  type: http
+  seq: 9
+}
+
+docs {
+  Lists SD-WAN CLI Feature Profiles and finds profiles whose name starts with the cleanup prefix.
+
+  The prefix comes from the `clean_name_prefix` environment variable and defaults to `bruno_edge_`.
+
+  This request saves:
+  - `cleanCliProfileCount`: number of matching CLI profiles
+  - `cleanCliProfileId`: first matching CLI profile ID, used by the next delete request
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/cli/
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+script:post-response {
+  const prefix = bru.getEnvVar("clean_name_prefix") || "bruno_edge_";
+  const body = res.getBody();
+  const profiles = body.data || body.items || body;
+  const matches = Array.isArray(profiles) ? profiles.filter((item) => (item.name || item.profileName || "").startsWith(prefix)) : [];
+  const first = matches[0];
+
+  bru.setEnvVar("cleanCliProfileCount", String(matches.length));
+  bru.setEnvVar("cleanCliProfileId", first ? (first.id || first.profileId || "") : "");
+}
