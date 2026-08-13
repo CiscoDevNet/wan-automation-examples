@@ -1,0 +1,85 @@
+meta {
+  name: 03 - Create Service Parcel - LAN VPN Interface Ethernet
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/service/{{serviceProfileId}}/lan/vpn/{{lanVpnParcelId}}/interface/ethernet
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "bruno_edge_vpn1_int",
+    "description": "Do not modify!",
+    "data": {
+      "shutdown": {
+        "optionType": "global",
+        "value": false
+      },
+      "interfaceName": {
+        "optionType": "global",
+        "value": "GigabitEthernet3"
+      },
+      "description": {
+        "optionType": "global",
+        "value": "LAN"
+      },
+      "intfIpAddress": {
+        "either": {
+          "addressType": {
+            "optionType": "global",
+            "value": "static"
+          },
+          "static": {
+            "staticIpV4AddressPrimary": {
+              "ipAddress": {
+                "optionType": "global",
+                "value": "{{vpn1_gi3_lan_ip}}"
+              },
+              "subnetMask": {
+                "optionType": "global",
+                "value": "255.255.255.0"
+              }
+            },
+            "staticIpV4AddressSecondary": []
+          }
+        }
+      },
+      "nat": {
+        "optionType": "default",
+        "value": false
+      },
+      "advanced": {
+        "ipMtu": {
+          "optionType": "default",
+          "value": 1500
+        },
+        "arpTimeout": {
+          "optionType": "default",
+          "value": 1200
+        },
+        "loadInterval": {
+          "optionType": "default",
+          "value": 30
+        },
+        "ipDirectedBroadcast": {
+          "optionType": "default",
+          "value": false
+        },
+        "icmpRedirectDisable": {
+          "optionType": "default",
+          "value": true
+        }
+      }
+    }
+  }
+}

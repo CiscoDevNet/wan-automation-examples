@@ -1,0 +1,66 @@
+meta {
+  name: 04 - Create Service Parcel - DHCP Server
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/service/{{serviceProfileId}}/dhcp-server
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "bruno_edge_vpn1_int_dhcp",
+    "description": "Do not modify!",
+    "data": {
+      "addressPool": {
+        "networkAddress": {
+          "optionType": "variable",
+          "value": "{{vpn1_gi3_dhcp_network}}"
+        },
+        "subnetMask": {
+          "optionType": "global",
+          "value": "255.255.255.0"
+        }
+      },
+      "exclude": {
+        "optionType": "variable",
+        "value": "{{vpn1_gi3_dhcp_address_exclude}}"
+      },
+      "leaseTime": {
+        "optionType": "default",
+        "value": 86400
+      },
+      "interfaceMtu": {
+        "optionType": "default"
+      },
+      "domainName": {
+        "optionType": "default"
+      },
+      "defaultGateway": {
+        "optionType": "variable",
+        "value": "{{vpn1_gi3_dhcp_default_gateway}}"
+      },
+      "dnsServers": {
+        "optionType": "global",
+        "value": [
+          "172.16.1.254",
+          "1.1.1.1"
+        ]
+      },
+      "tftpServers": {
+        "optionType": "default"
+      },
+      "optionCode": [],
+      "staticLease": []
+    }
+  }
+}

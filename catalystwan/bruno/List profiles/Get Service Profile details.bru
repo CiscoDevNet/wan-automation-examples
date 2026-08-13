@@ -1,0 +1,22 @@
+meta {
+  name: Get Service Profile details
+  type: http
+  seq: 6
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/service/{{serviceProfileId}}
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

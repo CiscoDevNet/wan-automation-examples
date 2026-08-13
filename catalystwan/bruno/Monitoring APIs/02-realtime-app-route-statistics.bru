@@ -1,0 +1,17 @@
+meta {
+  name: 02 - Real-Time Application-Route Statistics
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device/app-route/statistics?deviceId={{system_ip}}
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}

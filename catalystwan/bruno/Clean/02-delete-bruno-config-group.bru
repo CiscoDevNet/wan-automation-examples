@@ -1,0 +1,37 @@
+meta {
+  name: 02 - Delete Bruno Config Group
+  type: http
+  seq: 2
+}
+
+docs {
+  Deletes the Configuration Group identified by `cleanConfigGroupId`.
+
+  Run `01 - List Bruno Config Groups` first so the environment variable is populated.
+
+  Configuration Groups should be deleted before feature profiles because they reference the System, Transport, Service, and CLI profiles created by the lab.
+}
+
+delete {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/config-group/{{cleanConfigGroupId}}
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+script:pre-request {
+  const id = bru.getEnvVar("cleanConfigGroupId");
+  const uuid = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+  if (!uuid.test(id || "")) {
+    throw new Error("cleanConfigGroupId is missing. Run '01 - List Bruno Config Groups' first.");
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("cleanConfigGroupId", "");
+}

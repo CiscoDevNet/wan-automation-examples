@@ -1,0 +1,1 @@
+"""Device inventory API examples."""

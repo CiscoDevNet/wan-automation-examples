@@ -1,0 +1,17 @@
+meta {
+  name: 05 - Bulk Interface State
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/data/device/state/CEdgeInterface?count=1000
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}

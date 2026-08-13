@@ -1,0 +1,17 @@
+meta {
+  name: 06 - Poll Deploy Status
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device/action/status/{{parentTaskId}}
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}

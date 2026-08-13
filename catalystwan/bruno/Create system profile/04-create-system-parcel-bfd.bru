@@ -1,0 +1,38 @@
+meta {
+  name: 04 - Create System Parcel - BFD
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/system/{{systemProfileId}}/bfd
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "bruno_edge_bfd",
+    "description": "Do not modify!",
+    "data": {
+      "pollInterval": {
+        "optionType": "default",
+        "value": 600000
+      },
+      "multiplier": {
+        "optionType": "default",
+        "value": 6
+      },
+      "defaultDscp": {
+        "optionType": "default",
+        "value": 48
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+meta {
+  name: 02 - Create Transport Parcel - WAN VPN
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/transport/{{transportProfileId}}/wan/vpn
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "bruno_edge_vpn0",
+    "description": "Do not modify!",
+    "data": {
+      "vpnId": {
+        "optionType": "global",
+        "value": 0
+      },
+      "enhanceEcmpKeying": {
+        "optionType": "global",
+        "value": true
+      },
+      "dnsIpv4": {
+        "primaryDnsAddressIpv4": {
+          "optionType": "global",
+          "value": "172.16.1.254"
+        },
+        "secondaryDnsAddressIpv4": {
+          "optionType": "global",
+          "value": "172.16.2.254"
+        }
+      },
+      "ipv4Route": [
+        {
+          "prefix": {
+            "ipAddress": {
+              "optionType": "global",
+              "value": "0.0.0.0"
+            },
+            "subnetMask": {
+              "optionType": "global",
+              "value": "0.0.0.0"
+            }
+          },
+          "gateway": {
+            "optionType": "global",
+            "value": "nextHop"
+          },
+          "nextHop": [
+            {
+              "address": {
+                "optionType": "global",
+                "value": "172.16.1.254"
+              },
+              "distance": {
+                "optionType": "default",
+                "value": 1
+              }
+            },
+            {
+              "address": {
+                "optionType": "global",
+                "value": "172.16.2.254"
+              },
+              "distance": {
+                "optionType": "default",
+                "value": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+script:post-response {
+  const body = res.getBody();
+  const parcelId = body.parcelId || body.id;
+  if (!parcelId) {
+    throw new Error("Response did not include parcelId or id");
+  }
+  bru.setEnvVar("wanVpnParcelId", parcelId);
+}

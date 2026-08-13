@@ -1,0 +1,33 @@
+meta {
+  name: 05 - Deploy Config Group
+  type: http
+  seq: 5
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/config-group/{{configGroupId}}/device/deploy
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "devices": [
+      { "id": "{{device_id}}" }
+    ]
+  }
+}
+
+script:post-response {
+  // Capture parentTaskId for the next request
+  const body = res.getBody();
+  if (body && body.parentTaskId) {
+    bru.setEnvVar("parentTaskId", body.parentTaskId);
+  }
+}

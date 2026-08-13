@@ -1,0 +1,25 @@
+meta {
+  name: 02 - Associate Device
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/config-group/{{configGroupId}}/device/associate
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "devices": [
+      { "id": "{{device_id}}" }
+    ]
+  }
+}

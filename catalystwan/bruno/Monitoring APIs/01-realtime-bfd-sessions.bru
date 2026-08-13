@@ -1,0 +1,17 @@
+meta {
+  name: 01 - Real-Time BFD Sessions
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device/bfd/sessions?deviceId={{system_ip}}
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}

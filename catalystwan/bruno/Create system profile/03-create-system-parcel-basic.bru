@@ -1,0 +1,107 @@
+meta {
+  name: 03 - Create System Parcel - Basic
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://{{vmanage}}:{{port}}/dataservice/v1/feature-profile/sdwan/system/{{systemProfileId}}/basic
+  body: json
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "bruno_edge_system",
+    "description": "Do not modify!",
+    "data": {
+      "clock": {
+        "timezone": {
+          "optionType": "default",
+          "value": "UTC"
+        }
+      },
+      "description": {
+        "optionType": "default"
+      },
+      "location": {
+        "optionType": "default"
+      },
+      "gpsLocation": {
+        "latitude": {
+          "optionType": "default"
+        },
+        "longitude": {
+          "optionType": "default"
+        }
+      },
+      "deviceGroups": {
+        "optionType": "default"
+      },
+      "controllerGroupList": {
+        "optionType": "default"
+      },
+      "overlayId": {
+        "optionType": "default",
+        "value": 1
+      },
+      "portOffset": {
+        "optionType": "default",
+        "value": 0
+      },
+      "portHop": {
+        "optionType": "default",
+        "value": true
+      },
+      "controlSessionPps": {
+        "optionType": "default",
+        "value": 300
+      },
+      "trackTransport": {
+        "optionType": "default",
+        "value": true
+      },
+      "trackInterfaceTag": {
+        "optionType": "default"
+      },
+      "consoleBaudRate": {
+        "optionType": "default",
+        "value": "9600"
+      },
+      "maxOmpSessions": {
+        "optionType": "default"
+      },
+      "multiTenant": {
+        "optionType": "default",
+        "value": false
+      },
+      "trackDefaultGateway": {
+        "optionType": "default",
+        "value": true
+      },
+      "adminTechOnFailure": {
+        "optionType": "default",
+        "value": true
+      },
+      "idleTimeout": {
+        "optionType": "default"
+      },
+      "onDemand": {
+        "onDemandEnable": {
+          "optionType": "default",
+          "value": false
+        },
+        "onDemandIdleTimeout": {
+          "optionType": "default",
+          "value": 10
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+meta {
+  name: 06 - Bulk Interface Statistics
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/data/device/statistics/interfacestatistics?startDate={{monitoringStartDate}}&endDate={{monitoringEndDate}}&count=500&timeZone=UTC
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
+
+script:pre-request {
+  const end = new Date();
+  const start = new Date(end.getTime() - 60 * 60 * 1000);
+  bru.setVar("monitoringStartDate", start.toISOString().slice(0, 19));
+  bru.setVar("monitoringEndDate", end.toISOString().slice(0, 19));
+}

@@ -1,0 +1,37 @@
+vars {
+  port: 8443
+  systemProfileId:
+  transportProfileId:
+  serviceProfileId:
+  cliProfileId:
+  wanVpnParcelId:
+  lanVpnParcelId:
+  config_group_name: bruno_edge_basic
+  clean_name_prefix: bruno_edge_
+  cleanConfigGroupId:
+  cleanConfigGroupCount:
+  cleanSystemProfileId:
+  cleanSystemProfileCount:
+  cleanTransportProfileId:
+  cleanTransportProfileCount:
+  cleanServiceProfileId:
+  cleanServiceProfileCount:
+  cleanCliProfileId:
+  cleanCliProfileCount:
+  configGroupId:
+  hostname: edge-20
+  system_ip: 10.0.0.20
+  site_id: 20
+  pseudo_commit_timer: 300
+  vpn0_gi1_inet_ip: 172.16.1.20
+  vpn0_gi2_mpls_ip: 172.16.2.20
+  vpn1_gi3_lan_ip: 192.168.10.1
+  parentTaskId:
+}
+vars:secret [
+  vmanage,
+  apikey,
+  X-XSRF-TOKEN,
+  aaa_password,
+  device_id
+]

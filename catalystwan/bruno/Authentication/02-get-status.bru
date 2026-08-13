@@ -1,0 +1,17 @@
+meta {
+  name: 02 - Get Status
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/client/about
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}

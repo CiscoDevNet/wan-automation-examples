@@ -1,0 +1,17 @@
+meta {
+  name: 03 - Get Devices
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://{{vmanage}}:{{port}}/dataservice/device
+  body: none
+  auth: none
+}
+
+headers {
+  X-XSRF-TOKEN: {{X-XSRF-TOKEN}}
+  Authorization: Bearer {{apikey}}
+  Content-Type: application/json
+}
