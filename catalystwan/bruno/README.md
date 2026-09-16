@@ -20,7 +20,7 @@ The collection includes examples for:
 - Cleanup of objects created by the collection.
 
 It is also used by the
-[Catalyst SD-WAN API Learning Hub](https://jbarozet.github.io/catalyst-sdwan-api-hub/).
+[Catalyst SD-WAN API Learning Hub](https://ciscodevnet.github.io/catalyst-sdwan-api-hub/).
 
 ## Environments and Authentication
 

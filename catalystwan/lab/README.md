@@ -28,7 +28,7 @@ provide:
 
 See the [current Python examples README](../python/README.md) for setup and
 usage. For guided Catalyst SD-WAN API lessons, visit the
-[Catalyst SD-WAN API Learning Hub](https://jbarozet.github.io/catalyst-sdwan-api-hub/).
+[Catalyst SD-WAN API Learning Hub](https://ciscodevnet.github.io/catalyst-sdwan-api-hub/).
 
 ## Important Limitations
 

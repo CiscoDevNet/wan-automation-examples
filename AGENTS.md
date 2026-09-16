@@ -33,7 +33,7 @@ beside the Python and Terraform examples for the same platform.
 
 Do not add a general documentation tree. Guided Cisco Catalyst SD-WAN lessons,
 API concepts, and hands-on labs belong in the external
-[Catalyst SD-WAN API Learning Hub](https://jbarozet.github.io/catalyst-sdwan-api-hub/).
+[Catalyst SD-WAN API Learning Hub](https://ciscodevnet.github.io/catalyst-sdwan-api-hub/).
 The URL is provisional and may be updated when an official URL is available.
 
 ## Authoritative Documentation
@@ -42,7 +42,7 @@ Use primary documentation and verify current API paths, schemas, and product
 version compatibility before adding or changing requests:
 
 - [Catalyst SD-WAN API documentation](https://developer.cisco.com/docs/sdwan/)
-- [Catalyst SD-WAN API Learning Hub](https://jbarozet.github.io/catalyst-sdwan-api-hub/)
+- [Catalyst SD-WAN API Learning Hub](https://ciscodevnet.github.io/catalyst-sdwan-api-hub/)
 - [Meraki Dashboard API documentation](https://developer.cisco.com/meraki/api-v1/)
 - [CiscoDevNet SD-WAN Terraform provider](https://registry.terraform.io/providers/CiscoDevNet/sdwan/latest/docs)
 - [CiscoDevNet Meraki Terraform provider](https://registry.terraform.io/providers/CiscoDevNet/meraki/latest/docs)

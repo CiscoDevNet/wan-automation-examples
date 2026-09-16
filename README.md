@@ -10,7 +10,7 @@ Please note these examples are for demonstration purposes only and not productio
 
 For guided Cisco Catalyst SD-WAN lessons, API concepts, configuration and
 monitoring workflows, and hands-on lab material, visit the
-[Catalyst SD-WAN API Learning Hub](https://jbarozet.github.io/catalyst-sdwan-api-hub/).
+[Catalyst SD-WAN API Learning Hub](https://ciscodevnet.github.io/catalyst-sdwan-api-hub/).
 For the product API reference, see the
 [official Cisco Catalyst SD-WAN API documentation](https://developer.cisco.com/docs/sdwan/).
 

@@ -15,7 +15,7 @@ coding agents.
 
 This repository focuses on runnable examples. Guided Catalyst SD-WAN API
 lessons and lab documentation belong in the
-[Catalyst SD-WAN API Learning Hub](https://jbarozet.github.io/catalyst-sdwan-api-hub/).
+[Catalyst SD-WAN API Learning Hub](https://ciscodevnet.github.io/catalyst-sdwan-api-hub/).
 
 Use GitHub issues in
 [CiscoDevNet/wan-automation-examples](https://github.com/CiscoDevNet/wan-automation-examples/issues)
